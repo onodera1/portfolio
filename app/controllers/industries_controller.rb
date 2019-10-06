@@ -23,6 +23,11 @@ class IndustriesController < ApplicationController
     redirect_to industry_path(industry.id)
   end
 
+  def destroy
+    @industry = Industry.find(params[:id])
+    @industry.destroy
+    redirect_to industries_path
+  end
 private
   def industry_params
     params.require(:industry).permit(:industry_name)

@@ -1,6 +1,7 @@
 <h1>業種詳細</h1>
   <div><%= @industry.industry_name %></div>
 <%=link_to"編集",edit_industry_path(@industry.id) %>
+<%= link_to "削除",industry_path(@industry.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
 <%=link_to"戻る",industries_path %>
 
 

@@ -25,6 +25,11 @@ class SharingsController < ApplicationController
     sharing.update(sharing_params)
     redirect_to sharing_path(sharing.id)
   end
+  def destroy
+    @sharing=Sharing.find(params[:id])
+    @sharing.destroy
+    redirect_to sharings_path
+  end
 private
   def sharing_params
     params.require(:sharing).permit(:title, :body)

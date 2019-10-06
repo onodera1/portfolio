@@ -25,6 +25,12 @@ class CounselingsController < ApplicationController
     counseling.update(counseling_params)
     redirect_to counseling_path(counseling.id)
   end
+  def destroy
+    @counseling =Counseling.find(params[:id])
+    @counseling.destroy
+    redirect_to counselings_path
+  end
+
   private
   def counseling_params
     params.require(:counseling).permit(:title, :body)

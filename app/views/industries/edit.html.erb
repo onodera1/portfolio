@@ -1,0 +1,7 @@
+<h1>業種編集</h1>
+<%= form_for(@industry)do |f|%>
+  <h4>業種名</h4>
+  <%= f.text_field :industry_name %>
+  <%= f.submit '登録' %>
+<% end %>
+  <%= link_to '戻る', :back %>

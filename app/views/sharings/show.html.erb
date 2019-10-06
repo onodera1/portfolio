@@ -1,0 +1,9 @@
+
+<h1>共有詳細</h1>
+    <div>タイトル</div>
+    <div><%= @sharing.title %></div>
+    <div><%= @sharing.body %></div>
+    <div><%#= @counseling.inspect %></div>
+ <div><%= link_to "編集", edit_sharing_path(@sharing.id) %></div>
+ <div><%= link_to "戻る ", sharings_path  %></div>
+

@@ -1,0 +1,8 @@
+<h1>相談内容の登録</h1>
+<%= form_for(@counseling)do |f| %>
+  <h4>タイトル</h4>
+  <%= f.text_field :title %> 
+  <h4>本文</h4>
+  <%= f.text_area :body %>
+  <%= f.submit '投稿' %>
+<% end %>

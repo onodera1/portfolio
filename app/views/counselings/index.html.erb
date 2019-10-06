@@ -1,0 +1,5 @@
+<h1>相談一覧</h1>
+<% @counselings.each do |counseling| %>
+　　<p>タイトル</p>
+   <span><%=link_to counseling.title ,counseling_path(counseling.id) %></span>
+<% end %>

@@ -1,0 +1,10 @@
+
+<h1>相談詳細</h1>
+    <p>タイトル</p>
+    <div><%= @counseling.title %></div>
+    <div><%=@counseling.body %></div>
+
+    <div><%#= @counseling.inspect %></div>
+   <div><%= link_to "編集", edit_counseling_path(@counseling.id) %></div>
+    <div><%= link_to "戻る ", counselings_path  %></div>
+

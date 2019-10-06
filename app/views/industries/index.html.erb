@@ -1,0 +1,7 @@
+<h1>業種一覧</h1>
+ <% @industries.each do |industry| %>
+    <p>業種</p>
+    <span><%=link_to industry.industry_name ,industry_path(industry.id) %></span>
+
+ <% end %>
+  

@@ -4,7 +4,8 @@
 　　<%= f.text_field :title %>
 　　<h4>本文</h4>
 　　<%= f.text_area :body %>
-
+   <h4>業種</h4>
+   <%= f.collection_select :industry_id, Industry.all, :id, :industry_name %>
 　　<%= f.submit '保存' %>
 <% end %>
 　　<%= link_to '戻る', :back %>

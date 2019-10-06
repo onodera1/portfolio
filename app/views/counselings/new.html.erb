@@ -7,7 +7,7 @@
   
   <h4>業種</h4>
    <%= f.label :industry_id, "業種" %>
-   <%= f.collection_select :industry_id, Industry.all, :id, :industry_name %><br>
+   <%= f.collection_select :industry_id, Industry.all, :id, :industry_name %>
    <%= f.submit '投稿' %>
 <% end %>
 

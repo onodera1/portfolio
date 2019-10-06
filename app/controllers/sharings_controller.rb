@@ -1,6 +1,7 @@
 class SharingsController < ApplicationController
   def new
   	@sharing = Sharing.new
+    @industries =Industry.all
   end
 
   def create
@@ -15,6 +16,7 @@ class SharingsController < ApplicationController
 
   def show
     @sharing = Sharing.find(params[:id])
+    @industry =@sharing.industry
   end
   def edit
     @sharing = Sharing.find(params[:id])
@@ -32,7 +34,7 @@ class SharingsController < ApplicationController
   end
 private
   def sharing_params
-    params.require(:sharing).permit(:title, :body)
+    params.require(:sharing).permit(:title, :body,:industry_id)
   end
 end
 

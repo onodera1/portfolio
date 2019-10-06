@@ -1,6 +1,7 @@
 class CounselingsController < ApplicationController
   def new
   	@counseling = Counseling.new
+    @industries =Industry.all
   end
   def create
     counseling = Counseling.new(counseling_params)
@@ -14,6 +15,7 @@ class CounselingsController < ApplicationController
 
   def show #詳細
     @counseling = Counseling.find(params[:id])
+    @industry = @counseling.industry
   end
 
   def edit
@@ -33,6 +35,6 @@ class CounselingsController < ApplicationController
 
   private
   def counseling_params
-    params.require(:counseling).permit(:title, :body)
+    params.require(:counseling).permit(:title, :body,:industry_id)
   end
 end

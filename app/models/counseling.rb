@@ -1,3 +1,3 @@
 class Counseling < ApplicationRecord
-	# belongs_to :industry
+	belongs_to :industry
 end

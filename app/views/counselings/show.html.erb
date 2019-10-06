@@ -2,7 +2,8 @@
 <h1>相談詳細</h1>
     <p>タイトル</p>
     <div><%= @counseling.title %></div>
-    <div><%=@counseling.body %></div>
+    <div><%= @counseling.body %></div>
+    <div><%= @industry.industry_name %><div>
 
     <div><%#= @counseling.inspect %></div>
    <div><%= link_to "編集", edit_counseling_path(@counseling.id) %></div>

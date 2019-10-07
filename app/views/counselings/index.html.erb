@@ -2,4 +2,5 @@
 <% @counselings.each do |counseling| %>
 　　<p>タイトル</p>
    <span><%=link_to counseling.title ,counseling_path(counseling.id) %></span>
-<% end %>
+<% end %><br>
+ <%= link_to '戻る', user_path(current_user.id)%>

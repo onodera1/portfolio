@@ -13,12 +13,14 @@
 ActiveRecord::Schema.define(version: 2019_10_05_102818) do
 
   create_table "counselings", force: :cascade do |t|
+    t.integer "user_id"
     t.string "title"
     t.string "body"
     t.integer "industry_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["industry_id"], name: "index_counselings_on_industry_id"
+    t.index ["user_id"], name: "index_counselings_on_user_id"
   end
 
   create_table "industries", force: :cascade do |t|
@@ -28,12 +30,14 @@ ActiveRecord::Schema.define(version: 2019_10_05_102818) do
   end
 
   create_table "sharings", force: :cascade do |t|
+    t.integer "user_id"
     t.string "title"
     t.string "body"
     t.integer "industry_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["industry_id"], name: "index_sharings_on_industry_id"
+    t.index ["user_id"], name: "index_sharings_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_05_102818) do
+ActiveRecord::Schema.define(version: 2019_10_08_062317) do
 
   create_table "counselings", force: :cascade do |t|
     t.integer "user_id"
@@ -25,6 +25,13 @@ ActiveRecord::Schema.define(version: 2019_10_05_102818) do
 
   create_table "industries", force: :cascade do |t|
     t.string "industry_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "sharinglikes", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "sharing_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

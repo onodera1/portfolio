@@ -10,6 +10,9 @@ Rails.application.routes.draw do
    root 'top_pages#top'
    resources :counselings
    resources :industries
-   resources :sharings
    resources :users
+   resources :sharings do
+     resources :sharinglikes, only: [:create, :destroy]
+   end
+
 end

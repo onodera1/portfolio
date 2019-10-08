@@ -1,11 +1,25 @@
 
 <h1>共有詳細</h1>
     <div>タイトル</div>
-    <div><%= @sharing.title %></div>
-    <div><%= @sharing.body %></div>
+    <%= @sharing.title %>
+    <div>投稿者名</div>
+    <%#= @user.nickname %>
+    <div>共有内容</div>
+    <%= @sharing.body %>
     <div><%#= @counseling.inspect %></div>
-    <div><%= @industry.industry_name %><div>
+    <div>業種</div>
+    <%= @industry.industry_name %>
+
+    <% if user_signed_in? & current_user.already_sharingliked?(@sharing) %>
+      <%= link_to sharing_sharinglike_path(@sharing), method: :delete do %>
+        <i class="fa fa-heart" aria-hidden="true" style="color: red;">いいねじゃないね</i>
+	  <% end %>
+	  <% elsif user_signed_in? %>
+	    <%= link_to sharing_sharinglikes_path(@sharing), method: :post do %>
+	    <i class="fa fa-heart" aria-hidden="true">いいね</i>
+	  <% end %>
+	<% end %>
+    <h3>いいね件数: <%= @sharing.sharinglikes.count %></h3>
  <div><%= link_to "編集", edit_sharing_path(@sharing.id) %></div>
  <div><%= link_to "削除",sharing_path(@sharing.id) ,method: :delete, "data-confirm" => "本当に削除しますか？" %></div>
  <div><%= link_to "戻る ", sharings_path  %></div>
-

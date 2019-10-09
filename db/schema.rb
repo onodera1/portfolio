@@ -10,7 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_08_062317) do
+ActiveRecord::Schema.define(version: 2019_10_09_063328) do
+
+  create_table "counselinglikes", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "counseling_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "counselings", force: :cascade do |t|
     t.integer "user_id"

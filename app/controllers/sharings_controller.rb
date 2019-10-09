@@ -5,9 +5,10 @@ class SharingsController < ApplicationController
   end
 
   def create
-	  sharing = Sharing.new(sharing_params)
+	  @sharing = Sharing.new(sharing_params)
     #byebug
-	  sharing.save!
+    @sharing.user_id = current_user.id
+	  @sharing.save!
 	  redirect_to sharings_path
   end
 
@@ -18,8 +19,9 @@ class SharingsController < ApplicationController
   def show
     @sharing = Sharing.find(params[:id])
     @industry =@sharing.industry
-    #@user = @sharing.users.nickname
+    @user = @sharing.user
     @sharinglike = Sharinglike.new
+    
 
   end
   def edit

@@ -5,6 +5,7 @@ class CounselingsController < ApplicationController
   end
   def create
     counseling = Counseling.new(counseling_params)
+    counseling.user_id = current_user.id
     counseling.save
     redirect_to counselings_path
   end
@@ -16,6 +17,9 @@ class CounselingsController < ApplicationController
   def show #詳細
     @counseling = Counseling.find(params[:id])
     @industry = @counseling.industry
+    @user = @counseling.user
+    @counselinglike = Counselinglike.new
+
   end
 
   def edit

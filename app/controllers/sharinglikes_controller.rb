@@ -6,8 +6,9 @@ class SharinglikesController < ApplicationController
   end
 
   def destroy
-    @sharinglike = Sharinglike.find_by(sharing_id: params[:sharing_id], sharing_id: current_user.id)
+    @sharinglike = Sharinglike.find_by(sharing_id: params[:sharing_id], user_id: current_user.id)
     @sharinglike.destroy
     redirect_back(fallback_location: sharings_path)
   end
 end
+

@@ -1,0 +1,2 @@
+module CounselinglikesHelper
+end

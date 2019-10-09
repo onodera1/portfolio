@@ -3,7 +3,7 @@
     <div>タイトル</div>
     <%= @sharing.title %>
     <div>投稿者名</div>
-    <%#= @user.nickname %>
+    <%= link_to @user.nickname, user_path(@sharing.user.id)%>
     <div>共有内容</div>
     <%= @sharing.body %>
     <div><%#= @counseling.inspect %></div>

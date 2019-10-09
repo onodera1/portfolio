@@ -1,9 +1,24 @@
 
 <h1>相談詳細</h1>
-    <p>タイトル</p>
-    <div><%= @counseling.title %></div>
-    <div><%= @counseling.body %></div>
-    <div><%= @industry.industry_name %><div>
+    <div>タイトル</div>
+    <%= @counseling.title %>
+    <div>投稿者名</div>
+    <%= link_to @user.nickname, user_path(@counseling.user.id)%>
+    <div>相談内容</div>
+    <%= @counseling.body %>
+    <div>業種</div>
+    <%= @industry.industry_name %>
+    <% if user_signed_in? & current_user.already_counselingliked?(@counseling) %>
+      <%= link_to counseling_counselinglike_path(@counseling), method: :delete do %>
+        <i class="fa fa-heart" aria-hidden="true" style="color: red;">いいねじゃないね</i>
+	  <% end %>
+	  <% elsif user_signed_in? %>
+                    
+	    <%= link_to counseling_counselinglikes_path(@counseling), method: :post do %>
+	    <i class="fa fa-heart" aria-hidden="true">いいね</i>
+	  <% end %>
+	<% end %>
+    <h3>いいね件数: <%= @counseling.counselinglikes.count %></h3>
 
     <div><%#= @counseling.inspect %></div>
    <div><%= link_to "編集", edit_counseling_path(@counseling.id) %></div>

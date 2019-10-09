@@ -6,9 +6,11 @@ Rails.application.routes.draw do
   }
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
    # get 'top' => 'top_pages#top'
-
+   get 'mysharing_pages/:id' => 'users#mysharing_pages',as: :mysharing_pages
    root 'top_pages#top'
-   resources :counselings
+   resources :counselings do
+     resources :counselinglikes, only: [:create, :destroy]
+      end
    resources :industries
    resources :users
    resources :sharings do

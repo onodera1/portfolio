@@ -2,9 +2,9 @@
 <%=@user.nickname%>
 <div><%= link_to "ユーザー情報編集 " ,edit_user_registration_path(@user.id) %></div>
 <div><%= link_to " 相談内容の登録" , new_counseling_path %></div>
-<div><%= link_to " 相談内容一覧" ,counselings_path(@user.id) %></div>
+<div><%= link_to " 相談内容一覧" ,user_mycounseling_pages_path(@user.id)%></div>
 <div><%= link_to " 共有内容の登録" ,new_sharing_path %></div>
-<div><%= link_to "共有内容一覧 " ,mysharing_pages_path(@user.id)%></div>
+<div><%= link_to "共有内容一覧 " ,user_mysharing_pages_path(@user.id)%></div>
 <%= link_to 'TOPページへ戻る', root_path%>
 <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
 

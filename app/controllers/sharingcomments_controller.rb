@@ -6,6 +6,7 @@ class SharingcommentsController < ApplicationController
     comment.save
     redirect_to sharing_path(sharing)
 end
+
 def destroy
 	sharingcomment =Sharingcomment.find(params[:sharing_id])
 	sharingcomment.destroy

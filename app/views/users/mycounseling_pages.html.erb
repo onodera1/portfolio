@@ -1,0 +1,6 @@
+<div>投稿した共有一覧</div>
+<% @counselings.each do |counseling| %>
+  <div>タイトル</div>
+  <%= link_to counseling.title,counseling_path(counseling.id) %>
+<%end%>
+  <div><%= link_to '戻る', :back %></div>

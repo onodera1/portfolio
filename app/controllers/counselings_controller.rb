@@ -19,7 +19,7 @@ class CounselingsController < ApplicationController
     @industry = @counseling.industry
     @user = @counseling.user
     @counselinglike = Counselinglike.new
-
+    @counselingcomment = Counselingcomment.new
   end
 
   def edit

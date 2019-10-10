@@ -9,6 +9,7 @@ class User < ApplicationRecord
   has_many :sharingcomments,dependent: :destroy
   has_many :counselings, dependent: :destroy
   has_many :counselinglikes, dependent: :destroy
+  has_many :counselingcomments,dependent: :destroy
 
   def already_sharingliked?(sharing)
     self.sharinglikes.exists?(sharing_id: sharing.id)

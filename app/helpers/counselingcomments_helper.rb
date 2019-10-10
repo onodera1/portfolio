@@ -1,0 +1,2 @@
+module CounselingcommentsHelper
+end

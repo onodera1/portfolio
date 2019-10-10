@@ -14,12 +14,15 @@ class UsersController < ApplicationController
 	end
 
   def mysharing_pages
-    @user = User.find(params[:id])
+    @user = User.find(params[:user_id])
     #byebug
     @sharings = @user.sharings
-
   end
 
+  def mycounseling_pages
+    @user =User.find(params[:user_id])
+    @counselings = @user.counselings
+  end
 	private
   def user_params
     params.require(:industry).permit(:last_name,:first_name,:nickname,:phone_number,:email,:password,:password_confirmation,:title, :body,:industry_id)

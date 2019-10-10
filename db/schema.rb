@@ -10,7 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_09_085416) do
+ActiveRecord::Schema.define(version: 2019_10_10_042003) do
+
+  create_table "counselingcomments", force: :cascade do |t|
+    t.text "comment"
+    t.integer "user_id"
+    t.integer "counseling_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "counselinglikes", force: :cascade do |t|
     t.integer "user_id"

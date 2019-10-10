@@ -12,6 +12,7 @@ class SharingsController < ApplicationController
 	  redirect_to sharings_path
   end
 
+
   def index
   	@sharings=Sharing.all
   end

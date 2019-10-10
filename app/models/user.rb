@@ -3,10 +3,12 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-  has_many :sharinglikes, dependent: :destroy
+  
   has_many :sharings, dependent: :destroy
-  has_many :counselinglikes, dependent: :destroy
+  has_many :sharinglikes, dependent: :destroy
+  has_many :sharingcomments,dependent: :destroy
   has_many :counselings, dependent: :destroy
+  has_many :counselinglikes, dependent: :destroy
 
   def already_sharingliked?(sharing)
     self.sharinglikes.exists?(sharing_id: sharing.id)

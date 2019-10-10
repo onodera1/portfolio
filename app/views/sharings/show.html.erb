@@ -12,7 +12,7 @@
 
     <% if user_signed_in? & current_user.already_sharingliked?(@sharing) %>
       <%= link_to sharing_sharinglike_path(@sharing), method: :delete do %>
-        <i class="fa fa-heart" aria-hidden="true" style="color: red;">いいねじゃないね</i>
+        <i class="fa fa-heart" aria-hidden="true" style="color: red;">いいねを取り消す</i>
 	  <% end %>
 	  <% elsif user_signed_in? %>
 	    <%= link_to sharing_sharinglikes_path(@sharing), method: :post do %>
@@ -20,6 +20,42 @@
 	  <% end %>
 	<% end %>
     <h3>いいね件数: <%= @sharing.sharinglikes.count %></h3>
+
+
+
+
+<ol>
+    <% @sharing.sharingcomments.each do |sharingcomment| %>
+        <li class="comment">
+            <div class="comment-body bb">
+                <div class="comment-avatar">
+                    <div class="avatar">
+
+                    </div>
+                </div>
+                <div class="comment-text">
+                    <div class="comment-author clearfix">
+                        <a ><%= link_to sharingcomment.user.nickname,user_path(@sharing.user.id) %></a>
+                        <span class="comment-meta">
+                          <span class="comment-date"><%= sharingcomment.created_at.strftime('%Y/%m/%d') %></span>
+                        </span>
+                    </div>
+                    <div class="comment-entry"><%= sharingcomment.comment %></div>
+                </div>
+            </div>
+        </li>
+        <div><%= link_to "削除", sharing_sharingcomment_path(sharingcomment.id) ,method: :delete, "data-confirm" => "本当に削除しますか？" %></div>
+    <% end %>
+</ol>
+<%= form_for [@sharing, @sharingcomment] do |f| %>
+    <div class="row">
+        <div class="col-sm-12">
+            <%= f.text_area :comment, rows:'5', class: "form-control",placeholder: "コメントをここに" %>
+        </div>
+    </div>
+    <%= f.submit "送信する", class: "btn btn-lg btn-base-1 mt-20 pull-right" %>
+<% end %>
+
  <div><%= link_to "編集", edit_sharing_path(@sharing.id) %></div>
  <div><%= link_to "削除",sharing_path(@sharing.id) ,method: :delete, "data-confirm" => "本当に削除しますか？" %></div>
  <div><%= link_to "戻る ", sharings_path  %></div>

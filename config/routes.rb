@@ -15,6 +15,7 @@ Rails.application.routes.draw do
    resources :users
    resources :sharings do
      resources :sharinglikes, only: [:create, :destroy]
+     resources :sharingcomments, only: [:create, :destroy]
    end
 
 end

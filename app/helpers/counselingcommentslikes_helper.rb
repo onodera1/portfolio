@@ -1,0 +1,2 @@
+module CounselingcommentslikesHelper
+end

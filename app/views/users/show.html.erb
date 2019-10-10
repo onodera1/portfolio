@@ -1,5 +1,11 @@
 <h2>登録情報について</h2>
 <%=@user.nickname%>
+
+<div>いいね総数</div>
+<h3>いいね件数: <%= @counseling.counselinglikes.count %></h3>
+
+
+
 <div><%= link_to "ユーザー情報編集 " ,edit_user_registration_path(@user.id) %></div>
 <div><%= link_to " 相談内容の登録" , new_counseling_path %></div>
 <div><%= link_to " 相談内容一覧" ,user_mycounseling_pages_path(@user.id)%></div>

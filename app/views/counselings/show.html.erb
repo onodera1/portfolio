@@ -11,14 +11,13 @@
     <% if user_signed_in? & current_user.already_counselingliked?(@counseling) %>
       <%= link_to counseling_counselinglike_path(@counseling), method: :delete do %>
         <i class="fa fa-heart" aria-hidden="true" style="color: red;">いいねじゃないね</i>
-	  <% end %>
-	  <% elsif user_signed_in? %>
-	    <%= link_to counseling_counselinglikes_path(@counseling), method: :post do %>
-	    <i class="fa fa-heart" aria-hidden="true">いいね</i>
-	  <% end %>
-	<% end %>
-    <h3>いいね件数: <%= @counseling.counselinglikes.count %></h3>
-    
+      <% end %>
+      <% elsif user_signed_in? %>
+        <%= link_to counseling_counselinglikes_path(@counseling), method: :post do %>
+        <i class="fa fa-heart" aria-hidden="true">いいね</i>
+      <% end %>
+    <% end %>
+
     <ol>
     <% @counseling.counselingcomments.each do |counselingcomment| %>
         <li class="comment">
@@ -40,6 +39,18 @@
             </div>
         </li>
         <div><%= link_to "削除", counseling_counselingcomment_path(counselingcomment.id) ,method: :delete, "data-confirm" => "本当に削除しますか？" %></div>
+
+
+    <% if user_signed_in? & current_user.already_counselingcommentliked?(counselingcomment) %>
+      <%= link_to counseling_counselingcomment_counselingcommentslike_path(@counseling,counselingcomment), method: :delete do %>
+        <i class="fa fa-heart" aria-hidden="true" style="color: red;">いいねじゃないね</i>
+      <% end %>
+      <% elsif user_signed_in? %>
+        <%= link_to counseling_counselingcomment_counselingcommentslikes_path(@counseling,counselingcomment), method: :post do %>
+        <i class="fa fa-heart" aria-hidden="true">いいね</i>
+      <% end %>
+    <% end %>
+    <h3>いいね件数: <%= counselingcomment.counselingcommentlikes.count %></h3>
     <% end %>
 </ol>
 <%= form_for [@counseling, @counselingcomment] do |f| %>

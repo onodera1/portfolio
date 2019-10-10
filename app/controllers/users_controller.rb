@@ -1,7 +1,8 @@
 class UsersController < ApplicationController
 	def show
       @user = User.find(params[:id])
-      #@sharing = Sharing.find(params[:id])
+      @counseling = Counseling.find(params[:id])
+      @user = @counseling.user
     end
     def edit
       @user = User.find(params[:id])

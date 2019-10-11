@@ -1,0 +1,6 @@
+<div>保存した共有一覧</div>
+<% @sharingstocks.each do |sharingstock| %>
+  <div>タイトル</div>
+  <%= link_to sharingstock.title,sharing_path(sharingstock.id) %>
+<%end%>
+  <div><%= link_to '戻る', :back %></div>

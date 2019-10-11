@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_10_063256) do
+ActiveRecord::Schema.define(version: 2019_10_10_092752) do
 
   create_table "counselingcommentlikes", force: :cascade do |t|
     t.integer "user_id"
@@ -75,6 +75,13 @@ ActiveRecord::Schema.define(version: 2019_10_10_063256) do
     t.datetime "updated_at", null: false
     t.index ["industry_id"], name: "index_sharings_on_industry_id"
     t.index ["user_id"], name: "index_sharings_on_user_id"
+  end
+
+  create_table "sharingstocks", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "sharing_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|

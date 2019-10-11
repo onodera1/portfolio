@@ -24,6 +24,28 @@
 
 
 
+
+    <% if user_signed_in? & current_user.already_sharingstocked?(@sharing) %>
+      <%= link_to sharing_sharingstock_path(@sharing), method: :delete do %>
+        <i >保存を取り消す</i>
+      <% end %>
+      <% elsif user_signed_in? %>
+        <%= link_to sharing_sharingstocks_path(@sharing), method: :post do %>
+        <i >保存する</i>
+      <% end %>
+    <% end %>
+
+
+
+
+
+
+
+
+
+
+
+
 <ol>
     <% @sharing.sharingcomments.each do |sharingcomment| %>
         <li class="comment">

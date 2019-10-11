@@ -3,6 +3,7 @@ class Sharing < ApplicationRecord
 	belongs_to :user
 	has_many :sharinglikes, dependent: :destroy
 	has_many :sharingcomments, dependent: :destroy
+	has_many :sharingstocks,dependent: :destroy
 
 	
 end

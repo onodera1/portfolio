@@ -19,12 +19,14 @@ Rails.application.routes.draw do
    resources :users do
     get 'mycounseling_pages/'  =>'users#mycounseling_pages',as: :mycounseling_pages
     get 'mysharing_pages' => 'users#mysharing_pages',as: :mysharing_pages
+    get 'mysharingstock_pages'=>'users#mysharingstock_pages',as: :mysharingstock_pages
    end
 
 
    resources :sharings do
      resources :sharinglikes, only: [:create, :destroy]
      resources :sharingcomments, only: [:create, :destroy]
+     resources :sharingstocks, only: [:create, :destroy]
    end
 
 end

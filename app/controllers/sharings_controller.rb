@@ -23,6 +23,7 @@ class SharingsController < ApplicationController
     @user = @sharing.user
     @sharinglike = Sharinglike.new
     @sharingcomment = Sharingcomment.new
+    @sharingstock = Sharingstock.new
   end
   def edit
     @sharing = Sharing.find(params[:id])

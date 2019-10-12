@@ -1,5 +1,8 @@
+
 <h1>共有一覧</h1>
   <% @sharings.each do |sharing| %>
   <p>タイトル</p> <span><%=link_to sharing.title ,sharing_path(sharing.id) %></span>
 <% end %><br>
+<%#= paginate @sharings %>
+<%= paginate @sharings %>
 <%= link_to '戻る', user_path(current_user.id)%>

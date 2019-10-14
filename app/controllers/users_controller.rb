@@ -1,11 +1,18 @@
 class UsersController < ApplicationController
-	def show
+	def show 
       @user = User.find(params[:id])
       @counseling = Counseling.find(params[:id])
-      @user = @counseling.user
-
+      # binding.pry
+      @commentlikes_count = Counselingcommentlike.where(user_id: params[:id]).count
+      @counselinglikes_count = Counselinglike.where(user_id: params[:id]).count
     end
-    def edit
+      # @user = User.find(params[:id])
+      # @counseling = Counseling.find(params[:id])
+      # @commentlikes = Counselingcommentlike.where(user_id: prams[:id])
+      # @commentlikes_count= @commentlikes.count
+
+
+  def edit
       @user = User.find(params[:id])
     end
 
@@ -26,9 +33,24 @@ class UsersController < ApplicationController
     @counselings = @user.counselings
   end
 
+
   def mysharingstock_pages
     @user =User.find(params[:user_id])
-    @sharingstocks = @user.sharings
+    #byebug
+    @sharingstocks = @user.sharingstocks
+  end
+
+
+
+
+  def follows
+    @user = User.find(params[:id])
+    @users = @user.followings
+  end
+
+  def followers
+    @user = User.find(params[:id])
+    @users = @user.followers
   end
 
 	private

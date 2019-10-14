@@ -1,0 +1,5 @@
+<div>フォロー 一覧</div>
+<% @users.each do |user| %>
+  <div>名前</div>
+  <%= link_to user.nickname, user_path(user.id)%>
+<%end%>

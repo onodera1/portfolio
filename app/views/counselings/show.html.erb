@@ -29,7 +29,7 @@
                 </div>
                 <div class="comment-text">
                     <div class="comment-author clearfix">
-                        <a ><%= link_to counselingcomment.user.nickname,user_path(@counseling.user.id) %></a>
+                        <a ><%= link_to counselingcomment.user.nickname,user_path(counselingcomment.user.id) %></a>
                         <span class="comment-meta">
                           <span class="comment-date"><%= counselingcomment.created_at.strftime('%Y/%m/%d') %></span>
                         </span>

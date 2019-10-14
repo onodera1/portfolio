@@ -4,4 +4,4 @@
     <span><%=link_to industry.industry_name ,industry_path(industry.id) %></span>
 
  <% end %>
-  
+  <%= paginate @industries %>

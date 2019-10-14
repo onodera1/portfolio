@@ -12,6 +12,7 @@ class CounselingsController < ApplicationController
 
   def index
   	@counselings=Counseling.all
+    @counselings = Counseling.page(params[:page]).reverse_order
   end
 
   def show #詳細
@@ -21,6 +22,7 @@ class CounselingsController < ApplicationController
     @counselinglike = Counselinglike.new
     @counselingcomment = Counselingcomment.new
     @counselingcommentlike = Counselingcommentlike.new
+  
   end
 
   def edit

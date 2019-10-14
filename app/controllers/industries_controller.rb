@@ -8,7 +8,8 @@ class IndustriesController < ApplicationController
     redirect_to industries_path
   end
   def index
-  	@industries =Industry.all
+  	#@industries =Industry.all
+    @industries = Industry.page(params[:page]).reverse_order
   end
 
   def show

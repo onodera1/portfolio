@@ -36,16 +36,6 @@
     <% end %>
 
 
-
-
-
-
-
-
-
-
-
-
 <ol>
     <% @sharing.sharingcomments.each do |sharingcomment| %>
         <li class="comment">
@@ -81,3 +71,13 @@
  <div><%= link_to "編集", edit_sharing_path(@sharing.id) %></div>
  <div><%= link_to "削除",sharing_path(@sharing.id) ,method: :delete, "data-confirm" => "本当に削除しますか？" %></div>
  <div><%= link_to "戻る ", sharings_path  %></div>
+
+
+
+  <% if current_user != @sharing.user %>
+        <% if @sharing.user.followed_by?(current_user) %>
+            <p><%=link_to "フォロー済み", user_relationships_path(@sharing.user.id), method: :delete %></p>
+        <% else %>
+            <p><%=link_to "フォローする", user_relationships_path(@sharing.user.id), method: :post %></p>
+        <% end %>
+    <% end %>

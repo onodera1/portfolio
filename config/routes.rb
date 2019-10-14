@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'relationships/create'
+  get 'relationships/destroy'
   #devise_for :users
   devise_for :users, :controllers => {
   	:registrations => 'users/registrations'
@@ -17,6 +19,9 @@ Rails.application.routes.draw do
    end
    resources :industries
    resources :users do
+     resource :relationships, only: [:create, :destroy]
+      get :follows, on: :member 
+      get :followers, on: :member 
     get 'mycounseling_pages/'  =>'users#mycounseling_pages',as: :mycounseling_pages
     get 'mysharing_pages' => 'users#mysharing_pages',as: :mysharing_pages
     get 'mysharingstock_pages'=>'users#mysharingstock_pages',as: :mysharingstock_pages

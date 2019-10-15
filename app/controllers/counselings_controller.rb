@@ -13,6 +13,8 @@ class CounselingsController < ApplicationController
   def index
   	@counselings=Counseling.all
     @counselings = Counseling.page(params[:page]).reverse_order
+    @counselinglikes=Counseling.find(Counselinglike.group(:counseling_id).order("count(counseling_id) desc").limit(5).pluck(:counseling_id))
+    @counselingcommentlikes=Counselingcomment.find(Counselingcommentlike.group(:counselingcomment_id).order("count(counselingcomment_id) desc").limit(5).pluck(:counselingcomment_id))
   end
 
   def show #詳細

@@ -1,5 +1,11 @@
+<div>共有ランキング</div>
+<% @sharinglikes.each.with_index(1) do |sharinglike,i| %>
+	<h5>第 <%= i %> 位</h5>
+	<%=link_to sharinglike.title ,sharing_path(sharinglike.id)  %>
+<% end %><br><br>
 
-<h1>共有一覧</h1>
+
+<div>共有一覧</div>
   <% @search_sharings.each do |sharing| %>
   <p>タイトル</p> <span><%=link_to sharing.title ,sharing_path(sharing.id) %></span>
 <% end %><br>

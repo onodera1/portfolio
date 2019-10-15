@@ -11,7 +11,6 @@ class UsersController < ApplicationController
       # @commentlikes = Counselingcommentlike.where(user_id: prams[:id])
       # @commentlikes_count= @commentlikes.count
 
-
   def edit
       @user = User.find(params[:id])
     end
@@ -33,15 +32,11 @@ class UsersController < ApplicationController
     @counselings = @user.counselings
   end
 
-
   def mysharingstock_pages
     @user =User.find(params[:user_id])
     #byebug
     @sharingstocks = @user.sharingstocks
   end
-
-
-
 
   def follows
     @user = User.find(params[:id])

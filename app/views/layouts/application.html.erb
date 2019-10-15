@@ -1,29 +1,18 @@
-
-
-
-
 <!DOCTYPE html>
 <html>
   <head>
     <title>Portfolio</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
-
   <body>
-  <%= search_form_for @q do |f| %>
-  <%= f.label :name, "Keyword" %>
-  <%= f.search_field :title_cont %>
-
-  <%= f.submit "検索" %>
-<% end %>
-
-</dl>
+    <%= search_form_for @q do |f| %>
+      <%= f.label :name, "Keyword" %>
+      <%= f.search_field :title_cont %>
+      <%= f.submit "検索" %>
+    <% end %>
     <%= yield %>
   </body>
-
 </html>

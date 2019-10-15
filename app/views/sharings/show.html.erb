@@ -4,6 +4,13 @@
     <%= @sharing.title %>
     <div>投稿者名</div>
     <%= link_to @user.nickname, user_path(@sharing.user.id)%>
+    <% if current_user != @sharing.user %>
+        <% if @sharing.user.followed_by?(current_user) %>
+            <p><%=link_to "フォロー済み", user_relationships_path(@sharing.user.id), method: :delete %></p>
+        <% else %>
+            <p><%=link_to "フォローする", user_relationships_path(@sharing.user.id), method: :post %></p>
+        <% end %>
+    <% end %>
     <div>共有内容</div>
     <%= @sharing.body %>
     <div><%#= @counseling.inspect %></div>
@@ -19,11 +26,9 @@
 	    <i class="fa fa-heart" aria-hidden="true">いいね</i>
 	  <% end %>
 	<% end %>
+
+
     <h3>いいね件数: <%= @sharing.sharinglikes.count %></h3>
-
-
-
-
 
     <% if user_signed_in? & current_user.already_sharingstocked?(@sharing) %>
       <%= link_to sharing_sharingstock_path(@sharing), method: :delete do %>
@@ -35,30 +40,29 @@
       <% end %>
     <% end %>
 
+    <ol>
+        <% @sharing.sharingcomments.each do |sharingcomment| %>
+            <li class="comment">
+                <div class="comment-body bb">
+                    <div class="comment-avatar">
+                        <div class="avatar">
 
-<ol>
-    <% @sharing.sharingcomments.each do |sharingcomment| %>
-        <li class="comment">
-            <div class="comment-body bb">
-                <div class="comment-avatar">
-                    <div class="avatar">
-
+                        </div>
+                    </div>
+                    <div class="comment-text">
+                        <div class="comment-author clearfix">
+                            <a ><%= link_to sharingcomment.user.nickname,user_path(@sharing.user.id) %></a>
+                            <span class="comment-meta">
+                              <span class="comment-date"><%= sharingcomment.created_at.strftime('%Y/%m/%d') %></span>
+                            </span>
+                        </div>
+                        <div class="comment-entry"><%= sharingcomment.comment %></div>
                     </div>
                 </div>
-                <div class="comment-text">
-                    <div class="comment-author clearfix">
-                        <a ><%= link_to sharingcomment.user.nickname,user_path(@sharing.user.id) %></a>
-                        <span class="comment-meta">
-                          <span class="comment-date"><%= sharingcomment.created_at.strftime('%Y/%m/%d') %></span>
-                        </span>
-                    </div>
-                    <div class="comment-entry"><%= sharingcomment.comment %></div>
-                </div>
-            </div>
-        </li>
-        <div><%= link_to "削除", sharing_sharingcomment_path(sharingcomment.id) ,method: :delete, "data-confirm" => "本当に削除しますか？" %></div>
-    <% end %>
-</ol>
+            </li>
+            <div><%= link_to "削除", sharing_sharingcomment_path(sharingcomment.id) ,method: :delete, "data-confirm" => "本当に削除しますか？" %></div>
+        <% end %>
+    </ol>
 <%= form_for [@sharing, @sharingcomment] do |f| %>
     <div class="row">
         <div class="col-sm-12">
@@ -67,17 +71,8 @@
     </div>
     <%= f.submit "送信する", class: "btn btn-lg btn-base-1 mt-20 pull-right" %>
 <% end %>
+    <div><%= link_to "編集", edit_sharing_path(@sharing.id) %></div>
+    <div><%= link_to "削除",sharing_path(@sharing.id) ,method: :delete, "data-confirm" => "本当に削除しますか？" %></div>
+    <div><%= link_to "戻る ", sharings_path  %></div>
 
- <div><%= link_to "編集", edit_sharing_path(@sharing.id) %></div>
- <div><%= link_to "削除",sharing_path(@sharing.id) ,method: :delete, "data-confirm" => "本当に削除しますか？" %></div>
- <div><%= link_to "戻る ", sharings_path  %></div>
-
-
-
-  <% if current_user != @sharing.user %>
-        <% if @sharing.user.followed_by?(current_user) %>
-            <p><%=link_to "フォロー済み", user_relationships_path(@sharing.user.id), method: :delete %></p>
-        <% else %>
-            <p><%=link_to "フォローする", user_relationships_path(@sharing.user.id), method: :post %></p>
-        <% end %>
-    <% end %>
+  

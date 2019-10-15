@@ -1,4 +1,21 @@
 <h1>TOP</h1>
- <%= link_to 'マイページ', user_path(current_user.id) %>
- <div><%= link_to "共有内容一覧 " ,sharings_path%></div>
- <div><%= link_to " 相談内容一覧" ,counselings_path %></div>
+
+	<div>共有ランキング</div>
+	<% @sharinglikes.each.with_index(1) do |sharinglike,i| %>
+		<h5>第 <%= i %> 位</h5>
+		<%=link_to sharinglike.title ,sharing_path(sharinglike.id)  %>
+	<% end %><br><br>
+	 <div>相談ランキング</div>
+	<% @counselinglikes.each.with_index(1) do |counselinglike,i| %>
+		<h5>第 <%= i %> 位</h5>
+		<%=link_to counselinglike.title ,counseling_path(counselinglike.id)  %>
+	<% end %><br><br>
+
+	<div>解決ランキング</div>
+	<% @counselingcommentlikes.each.with_index(1) do |counselingcommentlike,i| %>
+		<h5>第 <%= i %> 位</h5>
+		<%=link_to counselingcommentlike.comment ,counseling_path(counselingcommentlike.id)  %>
+	<% end %><br><br>
+	<%= link_to 'マイページ', user_path(current_user.id) %>
+	<div><%= link_to "共有内容一覧 " ,sharings_path%></div>
+	<div><%= link_to " 相談内容一覧" ,counselings_path %></div>

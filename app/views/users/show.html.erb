@@ -5,8 +5,8 @@
 <div>相談コメントいいね件数: <%= @commentlikes_count %></div>
 
 
-<p><%=link_to "フォロー 一覧", follows_user_path(@user.id) %></p>
-<p><%=link_to "フォロワー一覧", followers_user_path(@user.id) %></p>
+<div><%=link_to "フォロー 一覧", follows_user_path(@user.id) %></div>
+<div><%=link_to "フォロワー一覧", followers_user_path(@user.id) %></div>
 
 
 
@@ -18,8 +18,8 @@
 <div><%= link_to "保存した共有一覧 " ,user_mysharingstock_pages_path(@user.id)%></div>
 
 
-<%= link_to 'TOPページへ戻る', root_path%>
-<%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+<div><%= link_to 'TOPページへ戻る', root_path%><div>
+<div><%= link_to "ログアウト", destroy_user_session_path, method: :delete %><div>
 
 
 

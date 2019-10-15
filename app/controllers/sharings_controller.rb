@@ -16,6 +16,7 @@ class SharingsController < ApplicationController
   def index
     @sharings = Sharing.page(params[:page]).reverse_order
   	#@sharings=Sharing.all
+    @sharinglikes=Sharing.find(Sharinglike.group(:sharing_id).order("count(sharing_id) desc").limit(5).pluck(:sharing_id))
   end
 
   def show

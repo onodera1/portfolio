@@ -1,5 +1,5 @@
 class CounselingcommentslikesController < ApplicationController
-	def create
+  def create
     @counselingcommentlike = current_user.counselingcommentlikes.create(counselingcomment_id: params[:counselingcomment_id])
     @counselingcommentlike.save
     redirect_back(fallback_location: counselings_path)

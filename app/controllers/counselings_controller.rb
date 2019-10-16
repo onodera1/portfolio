@@ -24,7 +24,6 @@ class CounselingsController < ApplicationController
     @counselinglike = Counselinglike.new
     @counselingcomment = Counselingcomment.new
     @counselingcommentlike = Counselingcommentlike.new
-  
   end
 
   def edit

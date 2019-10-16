@@ -18,4 +18,5 @@
    <span><%=link_to counseling.title ,counseling_path(counseling.id) %></span>
 <% end %><br>
 <%= paginate @counselings %>
- <%= link_to '戻る', user_path(current_user.id)%>
+<%= link_to '戻る', root_path %>
+<%#= link_to '戻る', user_path(current_user.id)%>

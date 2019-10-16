@@ -1,0 +1,13 @@
+<div>検索結果</div>
+
+<div><% @sharings.each do |sharing| %>
+  <%= link_to sharing.title, sharing %>
+<% end %></div><br>
+
+<div><% @counselings.each do |counseling| %>
+  <%= link_to counseling.title, counseling %>
+<% end %><div>
+
+<div><% @users.each do |user| %>
+  <%= link_to user.nickname, user %>
+<% end %><div>

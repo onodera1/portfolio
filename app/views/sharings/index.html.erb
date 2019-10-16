@@ -1,3 +1,6 @@
+
+
+
 <div>共有ランキング</div>
 <% @sharinglikes.each.with_index(1) do |sharinglike,i| %>
 	<h5>第 <%= i %> 位</h5>
@@ -9,5 +12,6 @@
   <p>タイトル</p> <span><%=link_to sharing.title ,sharing_path(sharing.id) %></span>
 <% end %><br>
 <%= paginate @sharings %>
-<%= link_to '戻る', user_path(current_user.id)%>
+<%= link_to '戻る', root_path %>
+<%#= link_to '戻る', user_path(current_user.id)%>
 

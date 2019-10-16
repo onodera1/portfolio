@@ -15,6 +15,16 @@
 		<h5>第 <%= i %> 位</h5>
 		<%=link_to counselingcommentlike.comment ,counseling_path(counselingcommentlike.id)  %>
 	<% end %><br><br>
-	<%= link_to 'マイページ', user_path(current_user.id) %>
+
+	<div>お気に入り一覧</div>
+　　　　　<% @sharingstocks.each do |sharingstock| %>
+　　　　　　　<div>タイトル</div>
+		   <%= link_to sharingstock.sharing.title,sharing_path(sharingstock.id) %>
+		<%end%>
 	<div><%= link_to "共有内容一覧 " ,sharings_path%></div>
-	<div><%= link_to " 相談内容一覧" ,counselings_path %></div>
+	<div><%= link_to " 相談内容一覧" ,counselings_path %></div><br>
+
+
+
+
+

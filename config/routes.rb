@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   }
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
    # get 'top' => 'top_pages#top'
-
+   get'result_index'=>'top_pages#result_index'
    root 'top_pages#top'
    resources :counselings do
      resources :counselinglikes, only: [:create, :destroy]

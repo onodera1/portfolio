@@ -43,6 +43,6 @@ class CounselingsController < ApplicationController
 
   private
   def counseling_params
-    params.require(:counseling).permit(:title, :body,:industry_id)
+    params.require(:counseling).permit(:title, :body,:industry_id,:image,:image)
   end
 end

@@ -8,7 +8,7 @@
 <% end %><br><br>
 
 <div>共有一覧</div>
-  <% @search_sharings.each do |sharing| %>
+  <% @sharings.each do |sharing| %>
   <p>タイトル</p> <span><%=link_to sharing.title ,sharing_path(sharing.id) %></span>
 <% end %><br>
 <%= paginate @sharings %>

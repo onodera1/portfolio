@@ -38,9 +38,10 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
       t.string :first_name
       t.string :nickname,index:true
       t.string :phone_number
-      t.datetime :deleted_at 
+      t.datetime :deleted_at
       t.integer :quit_status
       t.datetime :deleted_at,index: true
+      t.string :image_id
     end
 
     add_index :users, :email,                unique: true

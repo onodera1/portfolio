@@ -64,6 +64,7 @@ ActiveRecord::Schema.define(version: 2019_10_14_101146) do
     t.integer "user_id"
     t.string "title"
     t.string "body"
+    t.string "image_id"
     t.integer "industry_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -103,6 +104,7 @@ ActiveRecord::Schema.define(version: 2019_10_14_101146) do
     t.integer "user_id"
     t.string "title"
     t.string "body"
+    t.string "image_id"
     t.integer "industry_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -136,6 +138,7 @@ ActiveRecord::Schema.define(version: 2019_10_14_101146) do
     t.string "phone_number"
     t.datetime "deleted_at"
     t.integer "quit_status"
+    t.string "image_id"
     t.index ["deleted_at"], name: "index_users_on_deleted_at"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["nickname"], name: "index_users_on_nickname"

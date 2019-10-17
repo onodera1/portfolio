@@ -16,6 +16,7 @@
     <div><%#= @counseling.inspect %></div>
     <div>業種</div>
     <%= @industry.industry_name %>
+      <%= attachment_image_tag @sharing, :image, :fill, 150, 150, format: 'jpeg' %>
 
     <% if !(current_user.id == @sharing.user.id )%>
       <% if user_signed_in? & current_user.already_sharingliked?(@sharing) %>

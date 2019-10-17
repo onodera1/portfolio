@@ -20,8 +20,11 @@
     <%= f.label "メールアドレス" %>
       <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
-
-
+  <div class="field">
+    <%= f.label "画像" %>
+     <%= f.attachment_field :image %>
+  </div>
+  
   <div class="actions">
     <%= f.submit "送信", class: "submit" %>
   </div>

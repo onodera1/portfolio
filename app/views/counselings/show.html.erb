@@ -7,6 +7,10 @@
     <%= @counseling.body %>
     <div>業種</div>
     <%= @industry.industry_name %>
+    <%= attachment_image_tag @counseling, :image, :fill, 150, 150, format: 'jpeg' %>
+
+
+
     <% if user_signed_in? & current_user.already_counselingliked?(@counseling) %>
       <%= link_to counseling_counselinglike_path(@counseling), method: :delete do %>
         <i class="fa fa-heart" aria-hidden="true" style="color: red;">いいねじゃないね</i>
@@ -38,12 +42,6 @@
             </div>
         </li>
         <div><%= link_to "削除", counseling_counselingcomment_path(counselingcomment.id) ,method: :delete, "data-confirm" => "本当に削除しますか？" %></div>
-
-
-
-
-
-
 
   <% if current_user.id == @counseling.user.id %>
    <% if !(current_user.id == counselingcomment.user.id) %>

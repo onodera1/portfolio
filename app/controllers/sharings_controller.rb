@@ -43,7 +43,7 @@ class SharingsController < ApplicationController
   end
 private
   def sharing_params
-    params.require(:sharing).permit(:title, :body,:industry_id)
+    params.require(:sharing).permit(:title, :body,:industry_id,:image)
   end
 end
 

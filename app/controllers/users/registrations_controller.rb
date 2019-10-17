@@ -28,7 +28,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   private
   def user_params
-    params.require(:user).permit(:last_name,:first_name,:nickname,:phone_number,:email,:password,:password_confirmation)
+    params.require(:user).permit(:last_name,:first_name,:nickname,:phone_number,:email,:password,:password_confirmation,:image)
   end
   # DELETE /resource
   # def destroy

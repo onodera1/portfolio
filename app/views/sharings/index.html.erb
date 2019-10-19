@@ -1,11 +1,26 @@
 
 
 
-<div>共有ランキング</div>
-<% @sharinglikes.each.with_index(1) do |sharinglike,i| %>
-	<h5>第 <%= i %> 位</h5>
-	<%=link_to sharinglike.title ,sharing_path(sharinglike.id)  %>
-<% end %><br><br>
+
+<table>
+  <thead>
+    <tr>
+      <th>順位</th>
+      <th>名前</th>
+      <th>閲覧数</th>
+    </tr>
+  </thead>
+ 
+  <tbody>
+    <% @most_viewed.each.with_index(1) do |rank, i| %>
+      <tr>
+        <td><%= "#{i}" %></td>
+        <td><%= rank.title %></td>
+        <td><%= rank.impressions_count %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
 
 <div>共有一覧</div>
   <% @sharings.each do |sharing| %>

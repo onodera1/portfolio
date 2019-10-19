@@ -5,6 +5,7 @@ class Sharing < ApplicationRecord
 	has_many :sharingcomments, dependent: :destroy
 	has_many :sharingstocks,dependent: :destroy
   attachment :image
+  is_impressionable counter_cache: true
 
    def self.search(search)
     if search

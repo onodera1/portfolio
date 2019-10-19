@@ -42,6 +42,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
       t.integer :quit_status
       t.datetime :deleted_at,index: true
       t.string :image_id
+      
     end
 
     add_index :users, :email,                unique: true

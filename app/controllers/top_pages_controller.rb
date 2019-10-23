@@ -37,10 +37,9 @@ class TopPagesController < ApplicationController
     
 
     @sharing_news =Sharing.order(created_at: "DESC").limit(5)
+    @counseling_news =Counseling.order(created_at: "DESC").limit(5)
 
     #åbinding.pry
-
-
   end
 
   def result_index

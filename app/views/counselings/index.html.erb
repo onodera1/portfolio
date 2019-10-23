@@ -13,6 +13,36 @@
 			 <% end %>
 			</div>
 		  <div class="col-lg-3">
+		  	 <%= @counseling.inspect %>
+		  	<div>相談閲覧ランキング</div>
+            <table>
+              <thead>
+                <tr>
+                  <th>順位</th>
+                  <th>名前</th>
+                  <th>タイトル</th>
+                  <th>閲覧数</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% @counseling_viewed.each.with_index(1) do |counseling, i| %>
+                  <tr>
+                    <td>
+                      <%= "#{i}" %>
+                    </td>
+                   <td>
+                   	<%= counseling.user.nickname%>
+                   </td>
+                    <td>
+                      <%= link_to counseling.title ,counseling_path(counseling)%>
+                    </td>
+                    <td>
+                      <%=  counseling.impressions_count %>
+                    </td>
+                  </tr>
+                  <% end %>
+              </tbody>
+            </table>
 			<div>相談ランキング</div>
 				<% @counselinglikes.each.with_index(1) do |counselinglike,i| %>
 					<h5>第 <%= i %> 位</h5>

@@ -2,17 +2,18 @@
   <div class="center-block">
     <div class="row">
       <ul class="nav nav-tabs">
-        <li class="active"><a href="#touhoku2"data-toggle="tab">ランキング</a></li>
-        <li><a href="#kantou2"data-toggle="tab">お気に入りリスト</a></li>
-        <li><a href="#chuubu2"data-toggle="tab">新着一覧</a></li>
+        <li class="active"><a href="#ランキング"data-toggle="tab">ランキング</a></li>
+        <li><a href="#お気に入り"data-toggle="tab">お気に入りリスト</a></li>
+        <li><a href="#新着一覧"data-toggle="tab">新着一覧</a></li>
       </ul>
       <div class="tab-content">
-        <div class="tab-pane fade in active" id="touhoku2">
+        <div class="tab-pane fade in active" id="ランキング">
         <div>共有閲覧ランキング</div>
           <table>
             <thead>
               <tr>
                 <th>順位</th>
+                <th>名前</th>
                 <th>タイトル</th>
                 <th>閲覧数</th>
               </tr>
@@ -22,6 +23,9 @@
                 <tr>
                   <td>
                     <%= "#{i}" %>
+                  </td>
+                  <td>
+                    <%= sharing.user.nickname %>
                   </td>
                   <td>
                     <%= link_to sharing.title ,sharing_path(sharing)%>
@@ -38,6 +42,7 @@
               <thead>
                 <tr>
                   <th>順位</th>
+                   <th>名前</th>
                   <th>タイトル</th>
                   <th>閲覧数</th>
                 </tr>
@@ -47,6 +52,9 @@
                   <tr>
                     <td>
                       <%= "#{i}" %>
+                    </td>
+                    <td>
+                      <%= counseling.user.nickname %>
                     </td>
                     <td>
                       <%= link_to counseling.title ,counseling_path(counseling)%>
@@ -64,6 +72,7 @@
               <thead>
                 <tr>
                   <th>順位</th>
+                  <th>名前</th>
                   <th>タイトル</th>
                   <th>いいね数</th>
                 </tr>
@@ -73,6 +82,9 @@
                   <tr>
                     <td>
                       <%= i %>
+                    </td>
+                    <td>
+                      <%= sharing.user.nickname %>
                     </td>
                     <td>
                       <%=link_to sharing.title ,sharing_path(sharing.id)  %>
@@ -155,19 +167,21 @@
                 </table>
               </div>
 
-            <div class="tab-pane fade" id="kantou2">
+            <div class="tab-pane fade" id="お気に入り">
             <div>お気に入り一覧</div>
             <table>
               <thead>
                 <tr>
-                  <th>順位</th>
+                  <th>名前</th>
                   <th>タイトル</th>
                 </tr>
               </thead>
               <tbody> 
                 <% @sharingstocks.each do |sharingstock| %>
                   <tr> 
-                    <td>タイトル</td>
+                     <td>
+                      <%= sharingstock.user.nickname %>
+                    </td>
                     <td>
                       <%= link_to sharingstock.sharing.title,sharing_path(sharingstock.id) %>
                     </td>
@@ -176,18 +190,54 @@
               </tbody>
             </table>
           </div>
-            <div class="tab-pane fade" id="chuubu2">
+            <div class="tab-pane fade" id="新着一覧">
              <div>新着共有</div>
-              <% @sharing_news .each do |sharing_new| %>
-              <%#= sharing_new.inspect %><br>
-              <%#= sharing_new.class %><br>
-              <%= sharing_new.title %><br>
-                <span><%#=link_to sharing_new[3] ,sharing_path(sharing.id) %></span>
-              <% end %><%= link_to " 共有内容一覧" ,sharings_path %>
-
-      <div>新着相談</div>
-          <% @counselings.each do |counseling| %> 
-            <span><%=link_to counseling.title ,counseling_path(counseling.id) %></span>
-          <% end %><%= link_to " 相談内容一覧" ,counselings_path %>
+                <table>
+                  <thead>
+                    <tr>
+                      <th>ユーザー名</th>
+                      <th>タイトル</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <% @sharing_news .each do |sharing_new| %>
+                      <tr>
+                        <td>
+                          <%= sharing_new.user.nickname%>
+                        </td>
+                        <td>
+                          <%= link_to sharing_new.title ,sharing_path(sharing_new.id)%>
+                        </td>
+                      </tr>
+                    <% end %>
+                  </tbody>
+                </table>
+                <div><%= link_to " 共有内容一覧" ,sharings_path %></div>
+              <div>新着相談</div>
+               <%#= @counseling_news.inspect %>
+                <table>
+                  <thead>
+                    <tr>
+                      <th>ユーザー名</th>
+                      <th>タイトル</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <% @counseling_news.each do |counseling_new| %> 
+                      <tr>
+                        <td>
+                          <%= counseling_new.user.nickname%>
+                        </td>
+                        <td>
+                          <%= link_to counseling_new.title ,counseling_path(counseling_new.id) %>
+                        </td>
+                    </tr>
+                  <% end %>
+                </tbody>
+              </table>
+              <div><%= link_to " 相談内容一覧" ,counselings_path %></div>
             </div>
           </div>
+        </div>
+      </div>
+    </div>

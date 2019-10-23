@@ -1,28 +1,42 @@
-<table>
-  <thead>
-    <tr>
-      <th>順位</th>
-      <th>名前</th>
-      <th>閲覧数</th>
-    </tr>
-  </thead>
- 
-  <tbody>
-    <% @most_viewed.each.with_index(1) do |rank, i| %>
-      <tr>
-        <td><%= "#{i}" %></td>
-        <td><%= rank.title %></td>
-        <td><%= rank.impressions_count %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-9">
+      <div>共有一覧</div>
+        <% @sharings.each do |sharing| %>
+          <div class="panel panel-default">
+            <div class="panel-body">
+              <p>タイトル</p> <span><%=link_to sharing.title ,sharing_path(sharing.id) %></span>
+            </div>
+          </div>
+      <% end %>
+    </div>
+    <div class="col-lg-3">
+      <div>共有閲覧ランキング</div>
+      <table>
+        <thead>
+          <tr>
+            <th>順位</th>
+            <th>名前</th>
+            <th>閲覧数</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @most_viewed.each.with_index(1) do |rank, i| %>
+            <tr>
+              <td><%= "#{i}" %></td>
+              <td><%= rank.title %></td>
+              <td><%= rank.impressions_count %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
 
-<div>共有一覧</div>
-  <% @sharings.each do |sharing| %>
-  <p>タイトル</p> <span><%=link_to sharing.title ,sharing_path(sharing.id) %></span>
-<% end %><br>
-<%= paginate @sharings %>
-<%= link_to '戻る', root_path %>
+
+
+
 <%#= link_to '戻る', user_path(current_user.id)%>
-
+ <%= paginate @sharings %>
+      <%= link_to '戻る', root_path %>

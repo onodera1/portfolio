@@ -49,8 +49,21 @@
               </li>
               <div><%= link_to "削除", counseling_counselingcomment_path(counselingcomment.id) ,method: :delete, "data-confirm" => "本当に削除しますか？" %>
               </div>
+                 <% if current_user.id == @counseling.user.id %>
+                   <% if !(current_user.id == counselingcomment.user.id) %>
+                    <% if user_signed_in? & current_user.already_counselingcommentliked?(counselingcomment) %>
+                      <%= link_to counseling_counselingcomment_counselingcommentslike_path(@counseling,counselingcomment), method: :delete do %>
+                        <i class="fa fa-heart" aria-hidden="true" style="color: red;">いいねじゃないね</i>
+                      <% end %>
+                      <% elsif user_signed_in? %>
+                        <%= link_to counseling_counselingcomment_counselingcommentslikes_path(@counseling,counselingcomment), method: :post do %>
+                        <i class="fa fa-heart" aria-hidden="true">いいね</i>
+                        <% end %>
+                      <% end %>
+                      <div>いいね件数: <%= counselingcomment.counselingcommentlikes.count %></div>
+                  <% end %>
+               <% end %>
             </div>
-      
           <% end %>
         </ol> 
     </div>

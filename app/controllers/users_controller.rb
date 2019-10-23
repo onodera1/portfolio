@@ -5,6 +5,8 @@ class UsersController < ApplicationController
       # binding.pry
       @commentlikes_count = Counselingcommentlike.where(user_id: params[:id]).count
       @counselinglikes_count = Counselinglike.where(user_id: params[:id]).count
+      @counselingcommentlikes =@user.given_counseling_links.size
+      @sharinglikes =@user.given_sharing_links.size
     end
       # @user = User.find(params[:id])
       # @counseling = Counseling.find(params[:id])

@@ -66,6 +66,7 @@ ActiveRecord::Schema.define(version: 2019_10_17_093933) do
     t.string "body"
     t.string "image_id"
     t.integer "industry_id"
+    t.integer "impressions_count", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["industry_id"], name: "index_counselings_on_industry_id"

@@ -1,11 +1,44 @@
 class TopPagesController < ApplicationController
 	def top
 	  @counselings=Counseling.find(Counselinglike.group(:counseling_id).order("count(counseling_id) desc").limit(5).pluck(:counseling_id))
+    @aaa = Counselingcommentlike.group(:counselingcomment_id).order("count(counselingcomment_id) desc").limit(5).pluck(:counselingcomment_id)
+    #@bbb = Counselingcommentlike.select("user_id, count(counselingcomment_id) as like").group(:user_id).order("like desc")
+    #@bbb = Counselingcommentlike.select("*,count(user_id) as like").group(:user_id).order("like desc")
+    @bbb = User.joins(:counselingcommentlikes).group("users.id").count("counselingcommentlikes.id") #.order("like desc")
+    #1@counselingcommentlikes = current_user.given_counseling_links.size
+    #@bbb= Counselingcomment.joins(:counselingcommentlikes).group("counselingcomments.user_id").count() #.order("ounselingcommentlikes.id")
+    #@bbb = Hash[@bbb.sort_by{|__, v| -v}]
+
+    #@bbb= Counselingcomment.all.left_joins(:counselingcommentlikes).group("counselingcommentlikes.user_id").select('counselingcomments.*, COUNT(`counselingcommentlikes.user_id`) AS like') .order("ounselingcommentlikes.id")
+    #@bbb = Hash[@bbb.sort_by{|__, v| -v}]
+    #select count(*) as like, user_id from counselingcommentlikes group by user_id order by like DESC;
+
     @counselingcomments=Counselingcomment.find(Counselingcommentlike.group(:counselingcomment_id).order("count(counselingcomment_id) desc").limit(5).pluck(:counselingcomment_id))
+    
+    #1@sharinglikes = current_user.given_sharing_links.size
+  
+
+     @bbb = Counselingcomment.select('counselingcomments.*', 'count(counselingcommentlikes.id) AS counselingcommentlikes')
+                              .left_joins(:counselingcommentlikes)
+                              .group('counselingcomments.id')
+                              .order('counselingcommentlikes desc')
+                          # Post.select('posts.*', 'count(favorites.id) AS favs')
+                          #     .left_joins(:favorites)
+                          #     .group('posts.id')
+                          #     .order('favs desc')
+
+
     @sharings=Sharing.find(Sharinglike.group(:sharing_id).order("count(sharing_id) desc").limit(5).pluck(:sharing_id))
+    @sharings=Sharing.limit(5)
+    @counselings=Counseling.limit(5)
     @sharingstocks = Sharingstock.all
     @sharing_viewed = Sharing.order('impressions_count DESC').take(5)
-    # binding.pry
+    @counseling_viewed = Counseling.order('impressions_count DESC').take(5)
+    
+
+    @sharing_news =Sharing.order(created_at: "DESC").limit(5)
+
+    #åbinding.pry
 
 
   end

@@ -1,35 +1,37 @@
-<h1>相談詳細</h1>
-    <div>タイトル</div>
-    <%= @counseling.title %>
-    <div>投稿者名</div>
-    <%= link_to @user.nickname, user_path(@counseling.user.id)%>
-    <div>相談内容</div>
-    <%= @counseling.body %>
-    <div>業種</div>
-    <%= @industry.industry_name %>
-    <%= attachment_image_tag @counseling, :image, :fill, 150, 150, format: 'jpeg' %>
-
-
-
-    <% if user_signed_in? & current_user.already_counselingliked?(@counseling) %>
-      <%= link_to counseling_counselinglike_path(@counseling), method: :delete do %>
-        <i class="fa fa-heart" aria-hidden="true" style="color: red;">いいねじゃないね</i>
-      <% end %>
+<div class="container">
+  <div class="row">
+   <div class="col-lg-3">
+      <% if user_signed_in? & current_user.already_counselingliked?(@counseling) %>
+        <%= link_to counseling_counselinglike_path(@counseling), method: :delete do %>
+          <i class="fa fa-heart" aria-hidden="true" style="color: red;">いいねじゃないね</i>
+        <% end %>
       <% elsif user_signed_in? %>
         <%= link_to counseling_counselinglikes_path(@counseling), method: :post do %>
         <i class="fa fa-heart" aria-hidden="true">いいね</i>
+        <% end %>
       <% end %>
-    <% end %>
+        
+  </div>
+    <div class="col-lg-6">
+      <h2><%= @counseling.title %></h2>
+    <div class="box3">
+      <p> <%= attachment_image_tag @counseling, :image, :fill, 150, 150, format: 'jpeg', class: "img-circle profile-img", fallback: "no_image.jpg" %> <%= link_to @user.nickname, user_path(@counseling.user.id)%>  <%= @industry.industry_name %>
+      </p>
+    </div>
+    <div class="box3">
+    </div>
+    <div class="box28">
+      <span class="box-title">相談内容</span>
+      <p><%= @counseling.body %></p>
+    </div>
+    <div class="box23">
 
     <ol>
-    <% @counseling.counselingcomments.each do |counselingcomment| %>
+      <% @counseling.counselingcomments.each do |counselingcomment| %>
         <li class="comment">
-            <div class="comment-body bb">
-                <div class="comment-avatar">
-                    <div class="avatar">
-
-                    </div>
-                </div>
+          <div class="comment-body bb">
+            <div class="comment-avatar">
+              <div class="avatar">
                 <div class="comment-text">
                     <div class="comment-author clearfix">
                         <a ><%= link_to counselingcomment.user.nickname,user_path(counselingcomment.user.id) %></a>
@@ -37,46 +39,38 @@
                           <span class="comment-date"><%= counselingcomment.created_at.strftime('%Y/%m/%d') %></span>
                         </span>
                     </div>
-                    <div class="comment-entry"><%= counselingcomment.comment %></div>
+                    <p><div class="comment-entry"><%= counselingcomment.comment %></div></p>
                 </div>
+              </div>
             </div>
-        </li>
-        <div><%= link_to "削除", counseling_counselingcomment_path(counselingcomment.id) ,method: :delete, "data-confirm" => "本当に削除しますか？" %></div>
-
-  <% if current_user.id == @counseling.user.id %>
-   <% if !(current_user.id == counselingcomment.user.id) %>
-    <% if user_signed_in? & current_user.already_counselingcommentliked?(counselingcomment) %>
-      <%= link_to counseling_counselingcomment_counselingcommentslike_path(@counseling,counselingcomment), method: :delete do %>
-        <i class="fa fa-heart" aria-hidden="true" style="color: red;">いいねじゃないね</i>
-      <% end %>
-      <% elsif user_signed_in? %>
-        <%= link_to counseling_counselingcomment_counselingcommentslikes_path(@counseling,counselingcomment), method: :post do %>
-        <i class="fa fa-heart" aria-hidden="true">いいね</i>
-      <% end %>
-    <% end %>
-    <h3>いいね件数: <%= counselingcomment.counselingcommentlikes.count %></h3>
-    <% end %>
-    <% end %>
-  <% end %>
-</ol>
-<%= form_for [@counseling, @counselingcomment] do |f| %>
-
-
-
-
-
-
-    <div class="row">
-        <div class="col-sm-12">
-            <%= f.text_area :comment, rows:'5', class: "form-control",placeholder: "コメントをここに" %>
-        </div>
-    </div>
-    <%= f.submit "送信する", class: "btn btn-lg btn-base-1 mt-20 pull-right" %>
-<% end %>
-
+          </li>
+          <div><%= link_to "削除", counseling_counselingcomment_path(counselingcomment.id) ,method: :delete, "data-confirm" => "本当に削除しますか？" %></div>
+          <% if current_user.id == @counseling.user.id %>
+           <% if !(current_user.id == counselingcomment.user.id) %>
+            <% if user_signed_in? & current_user.already_counselingcommentliked?(counselingcomment) %>
+              <%= link_to counseling_counselingcomment_counselingcommentslike_path(@counseling,counselingcomment), method: :delete do %>
+                <i class="fa fa-heart" aria-hidden="true" style="color: red;">いいねじゃないね</i>
+              <% end %>
+              <% elsif user_signed_in? %>
+                <%= link_to counseling_counselingcomment_counselingcommentslikes_path(@counseling,counselingcomment), method: :post do %>
+                <i class="fa fa-heart" aria-hidden="true">いいね</i>
+                <% end %>
+              <% end %>
+              <div>いいね件数: <%= counselingcomment.counselingcommentlikes.count %></div>
+            <% end %>
+          <% end %>
+        <% end %>
+    </ol>
+        <%= form_for [@counseling, @counselingcomment] do |f| %>
+          <p><%= f.text_area :comment, rows:'5', class: "form-control",placeholder: "コメントをここに" %></p>
+          <%= f.submit "送信する", class: "btn btn-lg btn-base-1 mt-20 pull-right" %>
+       <% end %>
+  </div>
     <div><%#= @counseling.inspect %></div>
    <div><%= link_to "編集", edit_counseling_path(@counseling.id) %></div>
    <div><%= link_to"削除" ,counseling_path(@counseling.id),method: :delete,"data-confirm"=> "本当に削除しますか？" %></div>
    <div><%= link_to "戻る ", counselings_path  %></div>
-
-
+ </div>
+ <div class="col-lg-3"> 
+ </div>
+</div>

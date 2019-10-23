@@ -1,9 +1,19 @@
-<div>保存した共有一覧</div>
-<% @sharingstocks.each do |sharingstock| %>
-  <div>タイトル</div>
-  <%= link_to sharingstock.sharing.title,sharing_path(sharingstock.id) %>
-<%end%>
-  <div><%= link_to '戻る', :back %></div>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-3"> 
+    </div>
+     <div class="col-lg-6"> 
+		<div>保存した共有一覧</div>
+		<% @sharingstocks.each do |sharingstock| %>
+		  <div>タイトル</div>
+		  <%= link_to sharingstock.sharing.title,sharing_path(sharingstock.id) %>
+		<%end%>
+		  <div><%= link_to '戻る', :back %></div>
+      </div>
+    <div class="col-lg-3"> 
+    </div>
+  </div>
+</div>
 
 
   

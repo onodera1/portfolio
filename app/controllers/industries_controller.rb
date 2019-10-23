@@ -14,6 +14,7 @@ class IndustriesController < ApplicationController
 
   def show
     @industry =Industry.find(params[:id])
+    impressionist(@sharing, nil, :unique => [:session_hash])
   end
   def edit
     @industry=Industry.find(params[:id])

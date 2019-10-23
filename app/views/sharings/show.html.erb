@@ -1,82 +1,88 @@
-<h1>閲覧数</h1>
-<%=  @sharing.impressions_count %>
-
-<h1>共有詳細</h1>
-    <div>タイトル</div>
-    <%= @sharing.title %>
-    <div>投稿者名</div>
-    <%= link_to @user.nickname, user_path(@sharing.user.id)%>
-    <% if current_user != @sharing.user %>
-        <% if @sharing.user.followed_by?(current_user) %>
-            <p><%=link_to "フォロー済み", user_relationships_path(@sharing.user.id), method: :delete %></p>
-        <% else %>
-            <p><%=link_to "フォローする", user_relationships_path(@sharing.user.id), method: :post %></p>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-3"> 
+      <% if !(current_user.id == @sharing.user.id )%>
+        <% if user_signed_in? & current_user.already_sharingliked?(@sharing) %>
+          <%= link_to sharing_sharinglike_path(@sharing), method: :delete do %>
+           <<i class="fa fa-heart" aria-hidden="true" style="color: red;">いいねを取り消す</i>
+          <% end %>
+        <% elsif user_signed_in? %>
+          <%= link_to sharing_sharinglikes_path(@sharing), method: :post do %>
+           <i class="fa fa-heart" aria-hidden="true">いいね</i>
+          <% end %>
         <% end %>
-    <% end %>
-    <div>共有内容</div>
-    <%= @sharing.body %>
-    <div><%#= @counseling.inspect %></div>
-    <div>業種</div>
-    <%= @industry.industry_name %>
-      <%= attachment_image_tag @sharing, :image, :fill, 150, 150, format: 'jpeg' %>
-
-    <% if !(current_user.id == @sharing.user.id )%>
-      <% if user_signed_in? & current_user.already_sharingliked?(@sharing) %>
-        <%= link_to sharing_sharinglike_path(@sharing), method: :delete do %>
-          <i class="fa fa-heart" aria-hidden="true" style="color: red;">いいねを取り消す</i>
+      <% end %><br>
+      <% if user_signed_in? & current_user.already_sharingstocked?(@sharing) %>
+        <%= link_to sharing_sharingstock_path(@sharing), method: :delete do %>
+         <i >保存を取り消す</i>
         <% end %>
-      <% elsif user_signed_in? %>
-        <%= link_to sharing_sharinglikes_path(@sharing), method: :post do %>
-          <i class="fa fa-heart" aria-hidden="true">いいね</i>
-        <% end %>
-      <% end %>
-    <% end %>
-
-    <h3>いいね件数: <%= @sharing.sharinglikes.count %></h3>
-
-    <% if user_signed_in? & current_user.already_sharingstocked?(@sharing) %>
-      <%= link_to sharing_sharingstock_path(@sharing), method: :delete do %>
-        <i >保存を取り消す</i>
-      <% end %>
       <% elsif user_signed_in? %>
         <%= link_to sharing_sharingstocks_path(@sharing), method: :post do %>
-        <i >保存する</i>
-      <% end %>
-    <% end %>
-
-    <ol>
-        <% @sharing.sharingcomments.each do |sharingcomment| %>
-            <li class="comment">
-                <div class="comment-body bb">
-                    <div class="comment-avatar">
-                        <div class="avatar">
-
-                        </div>
-                    </div>
-                    <div class="comment-text">
-                        <div class="comment-author clearfix">
-                            <a ><%= link_to sharingcomment.user.nickname,user_path(@sharing.user.id) %></a>
-                            <span class="comment-meta">
-                              <span class="comment-date"><%= sharingcomment.created_at.strftime('%Y/%m/%d') %></span>
-                            </span>
-                        </div>
-                        <div class="comment-entry"><%= sharingcomment.comment %></div>
-                    </div>
-                </div>
-            </li>
-            <div><%= link_to "削除", sharing_sharingcomment_path(sharingcomment.id) ,method: :delete, "data-confirm" => "本当に削除しますか？" %></div>
+          <span class="st-Header_stock mr-2 py-2"> <i >保存する</i></span>
         <% end %>
-    </ol>
-<%= form_for [@sharing, @sharingcomment] do |f| %>
-    <div class="row">
-        <div class="col-sm-12">
-            <%= f.text_area :comment, rows:'5', class: "form-control",placeholder: "コメントをここに" %>
-        </div>
+      <% end %>
+       <% if current_user != @sharing.user %>
+        <% if @sharing.user.followed_by?(current_user) %>
+          <p><%=link_to "フォロー済み", user_relationships_path(@sharing.user.id), method: :delete %></p>
+        <% else %>
+          <p><%=link_to "フォローする", user_relationships_path(@sharing.user.id), method: :post %></p>
+        <% end %>
+      <% end %>
+      <div>いいね件数: <%= @sharing.sharinglikes.count %></div>
     </div>
-    <%= f.submit "送信する", class: "btn btn-lg btn-base-1 mt-20 pull-right" %>
-<% end %>
-    <div><%= link_to "編集", edit_sharing_path(@sharing.id) %></div>
-    <div><%= link_to "削除",sharing_path(@sharing.id) ,method: :delete, "data-confirm" => "本当に削除しますか？" %></div>
-    <div><%= link_to "戻る ", sharings_path  %></div>
 
-  
+
+     <div class="col-lg-6">
+      <h3><%= @sharing.title %></h3>
+      <div class="box3">
+        <p> <%= attachment_image_tag @sharing.user, :image, :fill, 50, 50, format: 'jpeg' , class: "img-circle profile-img", fallback: "no_image.jpg"%><%= link_to @user.nickname, user_path(@sharing.user.id)%> <%= @industry.industry_name %></p>
+　　　　</div>
+　　　　<div class="box3">
+        <p> <%= attachment_image_tag @sharing, :image, :fill, 150, 150, format: 'jpeg' %></p>
+　　　　</div>
+      <div class="box28">
+        <span class="box-title">共有内容</span>
+       <p> <%= @sharing.body %></p>
+　　　　</div>
+      <div class="box23">
+
+
+                <% @sharing.sharingcomments.each do |sharingcomment| %>
+                    <li class="comment">
+                        <div class="comment-body bb">
+                            <div class="comment-avatar">
+                                <div class="avatar">
+
+                                </div>
+                            </div>
+                            <div class="comment-text">
+                                <div class="comment-author clearfix">
+                                    <a ><%= link_to sharingcomment.user.nickname,user_path(@sharing.user.id) %></a>
+                                    <span class="comment-meta">
+                                      <span class="comment-date"><%= sharingcomment.created_at.strftime('%Y/%m/%d') %></span>
+                                    </span>
+                                </div>
+                                 <p><div class="comment-entry"><%= sharingcomment.comment %></div></p>
+                            </div>
+                        </div>
+                    </li>
+                    
+                    <div><%= link_to "削除", sharing_sharingcomment_path(sharingcomment.id) ,method: :delete, "data-confirm" => "本当に削除しますか？" %></div>
+                <% end %>
+            </ol>
+            <%= form_for [@sharing, @sharingcomment] do |f| %>
+            <div class="row">
+                <div class="col-sm-12">
+                    <p><%= f.text_area :comment, rows:'5', class: "form-control",placeholder: "コメントをここに" %></p>
+                </div>
+            </div>
+            <%= f.submit "送信する", class: "btn btn-lg btn-base-1 mt-20 pull-right" %>
+            <% end %></
+             </div>
+       
+
+            <div><%= link_to "編集", edit_sharing_path(@sharing.id) %></div>
+            <div><%= link_to "削除",sharing_path(@sharing.id) ,method: :delete, "data-confirm" => "本当に削除しますか？" %></div>
+            <div><%= link_to "戻る ", sharings_path  %></div>
+
+    

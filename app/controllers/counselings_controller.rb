@@ -19,6 +19,7 @@ class CounselingsController < ApplicationController
 
   def show #詳細
     @counseling = Counseling.find(params[:id])
+    impressionist(@counseling, nil, :unique => [:session_hash])
     @industry = @counseling.industry
     @user = @counseling.user
     @counselinglike = Counselinglike.new

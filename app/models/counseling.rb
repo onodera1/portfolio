@@ -4,6 +4,7 @@ class Counseling < ApplicationRecord
 	has_many :counselinglikes, dependent: :destroy
 	has_many :counselingcomments,dependent: :destroy
   attachment :image
+  is_impressionable counter_cache: true
 
 	def self.search(search)
     if search

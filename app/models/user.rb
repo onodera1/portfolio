@@ -3,7 +3,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-  
+
   has_many :sharings, dependent: :destroy
   has_many :sharinglikes, dependent: :destroy
   has_many :sharingcomments,dependent: :destroy
@@ -20,6 +20,11 @@ class User < ApplicationRecord
   has_many :passive_relationships, class_name: "Relationship", foreign_key: :follower_id
   has_many :followers, through: :passive_relationships, source: :following
   attachment :image
+
+  has_many :given_counseling_links, class_name: "Counselingcommentlike", through: :counselingcomments, source: :counselingcommentlikes
+  
+  has_many :given_sharing_links, class_name: "Sharinglike", through: :sharings, source: :sharinglikes
+
 
   def self.search(search)
     if search

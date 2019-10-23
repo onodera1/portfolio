@@ -1,14 +1,23 @@
-<h1>共有内容の登録</h1>
-<%= form_for(@sharing)do |f| %>
-  <h4>タイトル</h4>
-  <%= f.text_field :title %>
-  <h4>本文</h4>
-  <%= f.text_area :body %>
-  <h4>業種</h4>
-  <%= f.label :industry_id, "業種" %>
-  <%= f.collection_select :industry_id, Industry.all, :id, :industry_name %>
-  <h4>写真</h4>
-    <%= f.label "画像" %>
-     <%= f.attachment_field :image %>
-  <%= f.submit '投稿' %>
-<% end %>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-3"> 
+    </div>
+    <div class="col-lg-6"> 
+      <h1>共有内容の登録</h1>
+      <%= form_for(@sharing)do |f| %>
+        <h4>タイトル</h4>
+          <%= f.text_field :title %>
+        <h4>本文</h4>
+          <%= f.text_area :body %>
+        <h4>業種</h4>
+          <%= f.label :industry_id, "業種" %>
+          <%= f.collection_select :industry_id, Industry.all, :id, :industry_name %>
+        <h4>写真</h4>
+           <%= f.attachment_field :image %>
+        <%= f.submit '投稿' %>
+      <% end %>
+    </div>
+    <div class="col-lg-3"> 
+    </div>
+  </div>
+</div>

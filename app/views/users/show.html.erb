@@ -1,23 +1,75 @@
-<h2>登録情報について</h2>
-<div><%=@user.nickname%></div>
-<div>画像</div>
-  <%= attachment_image_tag @user, :image, :fill, 150, 150, format: 'jpeg' %>
-	<% if current_user != @user %>
-	        <% if @user.followed_by?(current_user) %>
-	            <p><%=link_to "フォロー済み", user_relationships_path(@user.id), method: :delete %></p>
-	        <% else %>
-	            <p><%=link_to "フォローする", user_relationships_path(@user.id), method: :post %></p>
-	        <% end %>
-	    <% end %>
-<div>相談いいね数　<%= @counselinglikes_count%></div>
-<div>相談コメントいいね件数: <%= @commentlikes_count %></div>
-<div><%=link_to "フォロー 一覧", follows_user_path(@user.id) %></div>
-<div><%=link_to "フォロワー一覧", followers_user_path(@user.id) %></div>
-<div><%= link_to "ユーザー情報編集 " ,edit_user_registration_path(@user.id) %></div>
-<div><%= link_to " 相談内容の登録" , new_counseling_path %></div>
-<div><%= link_to " 相談内容一覧" ,user_mycounseling_pages_path(@user.id)%></div>
-<div><%= link_to " 共有内容の登録" ,new_sharing_path %></div>
-<div><%= link_to "共有内容一覧 " ,user_mysharing_pages_path(@user.id)%></div>
-<div><%= link_to "保存した共有一覧 " ,user_mysharingstock_pages_path(@user.id)%></div>
-<div><%= link_to 'TOPページへ戻る', root_path%><div>
-<div><%= link_to "ログアウト", destroy_user_session_path, method: :delete %><div>
+
+
+
+<div class="container">
+  <div class="row">
+  	<div class="col-lg-2">
+    </div>
+    <div class="col-lg-8"> 
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <div><%=@user.nickname%></div>
+          <%= attachment_image_tag @user, :image, :fill, 50, 50, format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "no_image.jpg"%>
+            <% if current_user != @user %>
+          <% if @user.followed_by?(current_user) %>
+              <p><%=link_to "フォロー済み", user_relationships_path(@user.id), method: :delete %></p>
+          <% else %>
+              <p><%=link_to "フォローする", user_relationships_path(@user.id), method: :post %></p>
+          <% end %>
+      <% end %>
+        </div>
+      </div>
+  	
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">相談</h3>
+        </div>
+        <div class="panel-body">
+          <div><%= link_to " 相談内容の登録" , new_counseling_path %></div>
+          <div><%= link_to " 相談内容一覧" ,user_mycounseling_pages_path(@user.id)%></div>
+        </div>
+      </div>
+       <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">共有</h3>
+        </div>
+        <div class="panel-body">
+          <div><%= link_to " 共有内容の登録" ,new_sharing_path %></div>
+          <div><%= link_to "共有内容一覧 " ,user_mysharing_pages_path(@user.id)%></div>
+          <div><%= link_to "保存した共有一覧 " ,user_mysharingstock_pages_path(@user.id)%></div>
+        </div>
+      </div>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">フォロー</h3>
+        </div>
+        <div class="panel-body">
+          <div><%=link_to "フォロー 一覧", follows_user_path(@user.id) %></div>
+          <div><%=link_to "フォロワー一覧", followers_user_path(@user.id) %></div>
+        </div>
+      </div>
+       <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">ユーザー情報</h3>
+        </div>
+        <div class="panel-body">
+          <div><%= link_to "ユーザー情報編集 " ,edit_user_registration_path(@user.id) %></div>
+          <div><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></div>
+        </div>
+      </div>
+    		
+      
+      
+        <div>相談いいね数　<%= @counselinglikes_count%></div>
+        <div>相談コメントいいね件数: <%= @counselingcommentlikes %></div>
+        <div>共有いいね件数: <%= @sharinglikes %></div>
+      </div>
+      <div class="col-lg-2"> 
+    </div>
+  </div>
+
+
+
+
+
+

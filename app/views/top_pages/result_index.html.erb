@@ -1,13 +1,25 @@
-<div>検索結果</div>
 
-<div><% @sharings.each do |sharing| %>
-  <%= link_to sharing.title, sharing %>
-<% end %></div><br>
+<div class="container">
+	 <div class="row">
+	   <div class="col-lg-3"> 
+	   </div>
+	   <div class="col-lg-6"> 
+	     <div>検索結果</div>
+	      <div><% @sharings.each do |sharing| %>
+	        <%= link_to sharing.title, sharing %>
+				<% end %></div><br>
+				
+				<div><% @counselings.each do |counseling| %>
+	  			<%= link_to counseling.title, counseling %>
+				<% end %><div>
 
-<div><% @counselings.each do |counseling| %>
-  <%= link_to counseling.title, counseling %>
-<% end %><div>
+				<div><% @users.each do |user| %>
+	  			<%= link_to user.nickname, user %>
+				<% end %><div>
+	    </div>
+	    <div class="col-lg-3"> 
+	    </div>
+	  </div>
+</div>
 
-<div><% @users.each do |user| %>
-  <%= link_to user.nickname, user %>
-<% end %><div>
+

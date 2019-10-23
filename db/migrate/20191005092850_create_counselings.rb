@@ -6,6 +6,7 @@ class CreateCounselings < ActiveRecord::Migration[5.2]
       t.string :body
       t.string :image_id
       t.references :industry, foreign_key: true
+      t.integer :impressions_count, default: 0
       t.timestamps
     end
   end

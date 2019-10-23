@@ -5,32 +5,50 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+   
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> -->
+     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+       <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <meta charset="utf-8">
   </head>
   <body>
+<header>
+
     <div id="slidemenu">
+      <div class="container-fluid">
       <ul class="nav navbar-nav navbar-right" data-hover="dropdown" data-animations="zoomIn fadeIn fadeInUp fadeIn">
         <% if user_signed_in? %>
           <li class="">
-            <%= link_to 'TOPページ', root_path %>
+            <%= link_to 'TOPページ', root_path, data:{"turbolinks" => false} %>
           </li>
           <li class="">
-            <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+            <li><a class="dropdown-toggle" data-toggle="dropdown">投稿<b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><%= link_to " 相談内容の登録" , new_counseling_path %></li>
+                <li><%= link_to " 共有内容の登録" ,new_sharing_path %></li>
+              </ul>
+            </li>
           </li>
           <li class="">
-            <%= link_to '投稿フォーム', root_path %>
-          </li>
-           <li class="">
-            <%= link_to 'マイページ', user_path(current_user.id) %>
-          </li>
+               <li><a class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user" aria-hidden="true">
+               </span><b class="caret"></b></a>
+            <ul class="dropdown-menu">
+                <li><%= link_to 'マイページ', user_path(current_user.id) %></li>
+                <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
+            </ul>
+        </li>  
+
+
           <li class="">
-            <p>検索</p>
-              <%= form_tag(result_index_path,:method => 'get') do %>
-                <%= text_field_tag :search %>
-                <%= submit_tag 'Search', :name => nil %>
+            <li><a class="dropdown-toggle" data-toggle="dropdown">
+            <span class="glyphicon glyphicon-zoom-in" aria-hidden="true"></span>
+             <ul class="dropdown-menu"><b class="caret"></b></a>
+                <li><%= form_tag(result_index_path,:method => 'get') do %></li>
+                  <li><%= text_field_tag :search %></li>
+                <li><%= submit_tag 'Search', :name => nil %></li>
               <% end %>
           </li>
-          
         <% else %>
           <li class="">
             <%= link_to 'TOPページ', root_path %>
@@ -43,7 +61,14 @@
           </li>
         <% end %>
       </ul>
+      </div>
     </div>
+     </header>
     <%= yield %>
   </body>
 </html>
+
+
+
+
+

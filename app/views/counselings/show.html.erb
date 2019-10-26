@@ -16,7 +16,7 @@
       <h2><%= @counseling.title %></h2>
       <div class="box3">
         <p> 
-          <%= attachment_image_tag @counseling, :image, :fill, 150, 150, format: 'jpeg', class: "img-circle profile-img", fallback: "no_image.jpg" %> <%= link_to @user.nickname, user_path(@counseling.user.id)%>  <%= @industry.industry_name %>
+          <%= attachment_image_tag @counseling, :image, :fill, 150, 150, format: 'jpeg', class: "img-circle profile-img", fallback: "/no_image.jpg/" %> <%= link_to @user.nickname, user_path(@counseling.user.id)%>  <%= @industry.industry_name %>
         </p>
       </div>
       <div class="box3">

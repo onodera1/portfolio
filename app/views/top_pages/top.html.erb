@@ -32,10 +32,10 @@
                   </td>
                   <td>
                     <%= attachment_image_tag sharing.user, :image, :fill, 50, 50, format: 'jpeg' , class: "img-circle profile-img", fallback: "/images/no_image.jpg",size: '50x50'%>
-                     <%= sharing.user.nickname.truncate(3) %>
+                     <%= sharing.user.nickname %>
                   </td>
                   <td>
-                    <%= link_to sharing.title.truncate(3) ,sharing_path(sharing)%>
+                    <%= link_to sharing.title,sharing_path(sharing)%>
                   </td>
                   <td>
                     <%=  sharing.impressions_count %>
@@ -63,10 +63,10 @@
                     </td>
                     <td>
                        <%= attachment_image_tag counseling.user, :image, :fill, 50, 50, format: 'jpeg' , class: "img-circle profile-img",  fallback: "/images/no_image.jpg",size: '50x50'%>
-                        <%= counseling.user.nickname.truncate(3) %>
+                        <%= counseling.user.nickname %>
                     </td>
                     <td>
-                      <%= link_to counseling.title.truncate(3) ,counseling_path(counseling)%>
+                      <%= link_to counseling.title ,counseling_path(counseling)%>
                     </td>
                     <td>
                       <%=  counseling.impressions_count %>

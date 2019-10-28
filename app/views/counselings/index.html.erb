@@ -6,7 +6,7 @@
 				<% @counselings.each do |counseling| %>
 					<div class="panel panel-default">
 			      <div class="panel-body">
-					    <%= attachment_image_tag counseling.user, :image, :fill, 100, 100, format: 'jpeg' , class: "img-circle pull-left profile-img", fallback: "/no_image.jpg/",size: '50x50'%>
+					    <%= attachment_image_tag counseling.user, :image, :fill, 100, 100, format: 'jpeg' , class: "img-circle pull-left profile-img", fallback: "/images/no_image.jpg",size: '50x50'%>
               <%= counseling.user.nickname %>
 					    <%=link_to counseling.title ,counseling_path(counseling.id) %>
 			      </div>

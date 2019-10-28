@@ -5,7 +5,7 @@
         <% @sharings.each do |sharing| %>
           <div class="panel panel-default">
             <div class="panel-body">
-              <%= attachment_image_tag sharing.user, :image, :fill, 100, 100, format: 'jpeg' , class: "img-circle pull-left profile-img", fallback: "/no_image.jpg/",size: '50x50'%>
+              <%= attachment_image_tag sharing.user, :image, :fill, 100, 100, format: 'jpeg' , class: "img-circle pull-left profile-img", fallback: "/images/no_image.jpg",size: '50x50'%>
               <%=link_to sharing.title ,sharing_path(sharing.id) %>
             </div>
           </div>
@@ -30,7 +30,7 @@
                 <%= "#{i}" %>
               </td>
               <td>
-                <%= attachment_image_tag rank.user, :image, :fill, 50, 50, format: 'jpeg' , class: "img-circle profile-img", fallback: "/no_image.jpg/",size: '50x50'%>
+                <%= attachment_image_tag rank.user, :image, :fill, 50, 50, format: 'jpeg' , class: "img-circle profile-img",fallback: "/images/no_image.jpg",size: '50x50'%>
                      <%= rank.user.nickname %>
               </td>
               <td>
@@ -63,7 +63,7 @@
                       <%= i %>
                     </td>
                     <td>
-                        <%= attachment_image_tag sharing.user, :image, :fill, 50, 50, format: 'jpeg' , class: "img-circle profile-img", fallback: "/no_image.jpg/",size: '50x50'%>
+                        <%= attachment_image_tag sharing.user, :image, :fill, 50, 50, format: 'jpeg' , class: "img-circle profile-img", fallback: "/images/no_image.jpg",size: '50x50'%>
                       <%= sharing.user.nickname %>
                     </td>
                     <td>

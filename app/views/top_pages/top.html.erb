@@ -31,7 +31,7 @@
                     <%= "#{i}" %>
                   </td>
                   <td>
-                    <%= attachment_image_tag sharing.user, :image, :fill, 50, 50, format: 'jpeg' , class: "img-circle profile-img", fallback: "/no_image.jpg/",size: '50x50'%>
+                    <%= attachment_image_tag sharing.user, :image, :fill, 50, 50, format: 'jpeg' , class: "img-circle profile-img", fallback: "/images/no_image.jpg",size: '50x50'%>
                      <%= sharing.user.nickname.truncate(3) %>
                   </td>
                   <td>
@@ -46,7 +46,7 @@
           </table>
           <div>相談閲覧ランキング</div>
           <table class="table">
-              
+
               <thead>
                 <tr>
                   <th>順位</th>
@@ -62,7 +62,7 @@
                       <%= "#{i}" %>
                     </td>
                     <td>
-                       <%= attachment_image_tag counseling.user, :image, :fill, 50, 50, format: 'jpeg' , class: "img-circle profile-img", fallback: "/no_image.jpg/",size: '50x50'%>
+                       <%= attachment_image_tag counseling.user, :image, :fill, 50, 50, format: 'jpeg' , class: "img-circle profile-img",  fallback: "/images/no_image.jpg",size: '50x50'%>
                         <%= counseling.user.nickname.truncate(3) %>
                     </td>
                     <td>
@@ -93,7 +93,7 @@
                       <%= i %>
                     </td>
                     <td>
-                        <%= attachment_image_tag sharing.user, :image, :fill, 50, 50, format: 'jpeg' , class: "img-circle profile-img", fallback: "/no_image.jpg/",size: '50x50'%>
+                        <%= attachment_image_tag sharing.user, :image, :fill, 50, 50, format: 'jpeg' , class: "img-circle profile-img",fallback: "/images/no_image.jpg",size: '50x50'%>
                       <%= sharing.user.nickname %>
                     </td>
                     <td>
@@ -123,7 +123,7 @@
                       <%= i %>
                     </td>
                     <td>
-                        <%= attachment_image_tag counseling.user, :image, :fill, 50, 50, format: 'jpeg' , class: "img-circle profile-img", fallback: "/no_image.jpg/",size: '50x50'%>
+                        <%= attachment_image_tag counseling.user, :image, :fill, 50, 50, format: 'jpeg' , class: "img-circle profile-img", fallback: "/images/no_image.jpg",size: '50x50'%>
                         <%= counseling.user.nickname %>
                     </td>
                     <td>
@@ -154,7 +154,7 @@
                        <%= user_ranking[:rank] %>
                     </td>
                     <td>
-                       <%= attachment_image_tag user_ranking[:user], :image, :fill, 50, 50, format: 'jpeg' , class: "img-circle profile-img", fallback: "/no_image.jpg/",size: '50x50'%>
+                       <%= attachment_image_tag user_ranking[:user], :image, :fill, 50, 50, format: 'jpeg' , class: "img-circle profile-img", fallback: "/images/no_image.jpg",size: '50x50'%>
                        <%= user_ranking[:user].nickname %>
                     </td>
                     <td>
@@ -179,7 +179,7 @@
                 <% @sharingstocks.each do |sharingstock| %>
                   <tr> 
                      <td>
-                      <%= attachment_image_tag sharingstock.user, :image, :fill, 50, 50, format: 'jpeg' , class: "img-circle profile-img", fallback: "/no_image.jpg/",size: '50x50'%>
+                      <%= attachment_image_tag sharingstock.user, :image, :fill, 50, 50, format: 'jpeg' , class: "img-circle profile-img", fallback: "/images/no_image.jpg",size: '50x50'%>
                       <%= sharingstock.user.nickname %>
                     </td>
                     <td>
@@ -203,7 +203,7 @@
                     <% @sharing_news .each do |sharing_new| %>
                       <tr>
                         <td>
-                          <%= attachment_image_tag sharing_new.user, :image, :fill, 50, 50, format: 'jpeg' , class: "img-circle profile-img", fallback: "/no_image.jpg/",size: '50x50'%>
+                          <%= attachment_image_tag sharing_new.user, :image, :fill, 50, 50, format: 'jpeg' , class: "img-circle profile-img", fallback: "/images/no_image.jpg",size: '50x50'%>
                           <%= sharing_new.user.nickname%>
                         </td>
                         <td>
@@ -227,7 +227,7 @@
                     <% @counseling_news.each do |counseling_new| %> 
                       <tr>
                         <td>
-                          <%= attachment_image_tag counseling_new.user, :image, :fill, 50, 50, format: 'jpeg' , class: "img-circle profile-img", fallback: "/no_image.jpg/",size: '50x50'%>
+                          <%= attachment_image_tag counseling_new.user, :image, :fill, 50, 50, format: 'jpeg' , class: "img-circle profile-img",fallback: "/images/no_image.jpg",size: '50x50'%>
                           <%= counseling_new.user.nickname%>
                         </td>
                         <td>

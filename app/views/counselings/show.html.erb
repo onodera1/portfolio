@@ -37,7 +37,7 @@
                   <div class="comment-avatar">
                       <div class="comment-text">
                           <div class="comment-author clearfix">
-                              <a > <%= attachment_image_tag counselingcomment.user, :image, :fill, 50, 50, format: 'jpeg', class: "img-circle profile-img", fallback: "/no_image.jpg/",size: '50x50' %>
+                              <a > <%= attachment_image_tag counselingcomment.user, :image, :fill, 50, 50, format: 'jpeg', class: "img-circle profile-img", fallback: "/images/no_image.jpg",size: '50x50'%>
                                 <%= link_to counselingcomment.user.nickname,user_path(counselingcomment.user.id) %></a>
                               <span class="comment-meta">
                                 <span class="comment-date"><%= counselingcomment.created_at.strftime('%Y/%m/%d') %></span>

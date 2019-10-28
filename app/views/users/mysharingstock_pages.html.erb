@@ -15,7 +15,7 @@
                 <% @sharingstocks.each do |sharingstock| %>
                   <tr> 
                      <td>
-                      <%= attachment_image_tag sharingstock.user, :image, :fill, 50, 50, format: 'jpeg' , class: "img-circle profile-img", fallback: "/no_image.jpg/",size: '50x50'%>
+                      <%= attachment_image_tag sharingstock.user, :image, :fill, 50, 50, format: 'jpeg' , class: "img-circle profile-img", fallback: "/images/no_image.jpg",size: '50x50'%>
                       <%= sharingstock.user.nickname %>
                     </td>
                     <td>

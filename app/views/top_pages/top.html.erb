@@ -15,7 +15,7 @@
 
        <div class="tab-pane fade" id="ランキング">
         <div>共有閲覧ランキング</div>
-          <table>
+          <table class="table">
             <thead>
               <tr>
                 <th>順位</th>
@@ -32,10 +32,10 @@
                   </td>
                   <td>
                     <%= attachment_image_tag sharing.user, :image, :fill, 50, 50, format: 'jpeg' , class: "img-circle profile-img", fallback: "/no_image.jpg/",size: '50x50'%>
-                     <%= sharing.user.nickname %>
+                     <%= sharing.user.nickname.truncate(3) %>
                   </td>
                   <td>
-                    <%= link_to sharing.title ,sharing_path(sharing)%>
+                    <%= link_to sharing.title.truncate(3) ,sharing_path(sharing)%>
                   </td>
                   <td>
                     <%=  sharing.impressions_count %>
@@ -45,7 +45,8 @@
             </tbody>
           </table>
           <div>相談閲覧ランキング</div>
-            <table>
+          <table class="table">
+              
               <thead>
                 <tr>
                   <th>順位</th>
@@ -62,10 +63,10 @@
                     </td>
                     <td>
                        <%= attachment_image_tag counseling.user, :image, :fill, 50, 50, format: 'jpeg' , class: "img-circle profile-img", fallback: "/no_image.jpg/",size: '50x50'%>
-                        <%= counseling.user.nickname %>
+                        <%= counseling.user.nickname.truncate(3) %>
                     </td>
                     <td>
-                      <%= link_to counseling.title ,counseling_path(counseling)%>
+                      <%= link_to counseling.title.truncate(3) ,counseling_path(counseling)%>
                     </td>
                     <td>
                       <%=  counseling.impressions_count %>

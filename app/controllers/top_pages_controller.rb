@@ -38,8 +38,10 @@ class TopPagesController < ApplicationController
     
 
 
-
-    hash = Counselingcommentlike.joins(:counselingcomment).group('counselingcomments.user_id').order(:count).size
+puts "===================================================="
+    hash = Counselingcommentlike.joins(:counselingcomment).group('counselingcomments.user_id').order('count(counselingcomments.user_id) desc').size
+    puts hash
+puts "===================================================="
     users = User.find(hash.keys)
     @user_rankings = hash.values.each_with_index.map do |count, index|
       {

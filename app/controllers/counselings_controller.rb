@@ -18,7 +18,7 @@ class CounselingsController < ApplicationController
     #@counselinglikes=Counseling.find(Counselinglike.group(:counseling_id).order("count(counseling_id) desc").limit(5).pluck(:counseling_id))
     @counselingcommentlikes=Counselingcomment.find(Counselingcommentlike.group(:counselingcomment_id).order("count(counselingcomment_id) desc").limit(5).pluck(:counselingcomment_id))
     @counseling_viewed = Counseling.order('impressions_count DESC').take(5)
-    hash = Counselingcommentlike.joins(:counselingcomment).group('counselingcomments.user_id').order(:count).size
+      hash = Counselingcommentlike.joins(:counselingcomment).group('counselingcomments.user_id').order('count(counselingcomments.user_id) desc').size
       users = User.find(hash.keys)
       @user_rankings = hash.values.each_with_index.map do |count, index|
         {

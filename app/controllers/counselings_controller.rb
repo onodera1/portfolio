@@ -1,5 +1,6 @@
 class CounselingsController < ApplicationController
   def new
+    #binding.pry
   	@counseling = Counseling.new
     @industries =Industry.all
   end
@@ -13,10 +14,22 @@ class CounselingsController < ApplicationController
   def index
   	@counselings=Counseling.all
     @counselings = Counseling.page(params[:page]).reverse_order
-    @counselinglikes=Counseling.find(Counselinglike.group(:counseling_id).order("count(counseling_id) desc").limit(5).pluck(:counseling_id))
+    @icounselings=Counseling.find(Counselinglike.group(:counseling_id).order("count(counseling_id) desc").limit(5).pluck(:counseling_id))
+    #@counselinglikes=Counseling.find(Counselinglike.group(:counseling_id).order("count(counseling_id) desc").limit(5).pluck(:counseling_id))
     @counselingcommentlikes=Counselingcomment.find(Counselingcommentlike.group(:counselingcomment_id).order("count(counselingcomment_id) desc").limit(5).pluck(:counselingcomment_id))
     @counseling_viewed = Counseling.order('impressions_count DESC').take(5)
+    hash = Counselingcommentlike.joins(:counselingcomment).group('counselingcomments.user_id').order(:count).size
+      users = User.find(hash.keys)
+      @user_rankings = hash.values.each_with_index.map do |count, index|
+        {
+          rank: index + 1,
+          user: users[index],
+          count: count
+        }
+      end
+    
   end
+
 
   def show #詳細
     @counseling = Counseling.find(params[:id])
@@ -45,6 +58,6 @@ class CounselingsController < ApplicationController
 
   private
   def counseling_params
-    params.require(:counseling).permit(:title, :body,:industry_id,:image,:image)
+    params.require(:counseling).permit(:title, :body,:industry_id,:image)
   end
 end

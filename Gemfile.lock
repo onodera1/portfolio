@@ -113,6 +113,7 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
+    diff-lcs (1.3)
     domain_name (0.5.20190701)
       unf (>= 0.0.5, < 1.0.0)
     erubi (1.9.0)
@@ -179,6 +180,7 @@ GEM
     minitest (5.12.2)
     msgpack (1.3.1)
     mustermann (1.0.3)
+    mysql2 (0.5.2)
     netrc (0.11.0)
     nio4r (2.5.2)
     nokogiri (1.10.4)
@@ -244,6 +246,23 @@ GEM
       http-cookie (>= 1.0.2, < 2.0)
       mime-types (>= 1.16, < 4.0)
       netrc (~> 0.8)
+    rspec-core (3.8.2)
+      rspec-support (~> 3.8.0)
+    rspec-expectations (3.8.4)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.8.0)
+    rspec-mocks (3.8.1)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.8.0)
+    rspec-rails (3.8.2)
+      actionpack (>= 3.0)
+      activesupport (>= 3.0)
+      railties (>= 3.0)
+      rspec-core (~> 3.8.0)
+      rspec-expectations (~> 3.8.0)
+      rspec-mocks (~> 3.8.0)
+      rspec-support (~> 3.8.0)
+    rspec-support (3.8.2)
     ruby_dep (1.5.0)
     rubyzip (2.0.0)
     sass (3.7.4)
@@ -332,11 +351,13 @@ DEPENDENCIES
   jquery-rails
   kaminari (~> 1.1.1)
   listen (>= 3.0.5, < 3.2)
+  mysql2
   pry-rails
   puma (~> 3.11)
   rails (~> 5.2.3)
   refile!
   refile-mini_magick
+  rspec-rails
   sass-rails (~> 5.0)
   selenium-webdriver
   spring

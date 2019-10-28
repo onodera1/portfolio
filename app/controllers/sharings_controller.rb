@@ -12,7 +12,6 @@ class SharingsController < ApplicationController
 	  redirect_to sharings_path
   end
 
-
   def index
     @sharings = Sharing.page(params[:page]).reverse_order
   	#@sharings=Sharing.all
@@ -48,4 +47,3 @@ private
     params.require(:sharing).permit(:title, :body,:industry_id,:image)
   end
 end
-

@@ -8,8 +8,7 @@
     <div class="col-lg-8"> 
       <div class="panel panel-default">
         <div class="panel-body">
-          <div><%=@user.nickname%></div>
-          <%= attachment_image_tag @user, :image, :fill, 50, 50, format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "/no_image.jpg/"%>
+          <div><%= attachment_image_tag @user, :image, :fill, 50, 50, format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "/no_image.jpg/",size: '50x50'%></div><div><%=@user.nickname%></div>
             <% if current_user != @user %>
               <% if @user.followed_by?(current_user) %>
                   <p><%=link_to "フォロー済み", user_relationships_path(@user.id), method: :delete %></p>

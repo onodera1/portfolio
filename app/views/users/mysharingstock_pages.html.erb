@@ -3,11 +3,28 @@
     <div class="col-lg-3"> 
     </div>
      <div class="col-lg-6"> 
-		<div>保存した共有一覧</div>
-		<% @sharingstocks.each do |sharingstock| %>
-		  <div>タイトル</div>
-		  <%= link_to sharingstock.sharing.title,sharing_path(sharingstock.id) %>
-		<%end%>
+		 <div>お気に入り一覧</div>
+            <table>
+              <thead>
+                <tr>
+                  <th>名前</th>
+                  <th>タイトル</th>
+                </tr>
+              </thead>
+              <tbody> 
+                <% @sharingstocks.each do |sharingstock| %>
+                  <tr> 
+                     <td>
+                      <%= attachment_image_tag sharingstock.user, :image, :fill, 50, 50, format: 'jpeg' , class: "img-circle profile-img", fallback: "/no_image.jpg/",size: '50x50'%>
+                      <%= sharingstock.user.nickname %>
+                    </td>
+                    <td>
+                      <%= link_to sharingstock.sharing.title,sharing_path(sharingstock.id) %>
+                    </td>
+                  </tr>
+                <%end%>
+              </tbody>
+            </table>
 		  <div><%= link_to '戻る', :back %></div>
       </div>
     <div class="col-lg-3"> 

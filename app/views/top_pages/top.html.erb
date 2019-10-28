@@ -1,13 +1,19 @@
+<div class="main-container"></div>
 <div class="container">
   <div class="center-block">
     <div class="row">
       <ul class="nav nav-tabs">
-        <li class="active"><a href="#ランキング"data-toggle="tab">ランキング</a></li>
+        <li class="active">
+        <a href="#ホーム"data-toggle="tab">ホーム</a></li>
+        <li><a href="#ランキング"data-toggle="tab">ランキング</a></li>
         <li><a href="#お気に入り"data-toggle="tab">お気に入りリスト</a></li>
         <li><a href="#新着一覧"data-toggle="tab">新着一覧</a></li>
       </ul>
-      <div class="tab-content">
-        <div class="tab-pane fade in active" id="ランキング">
+    <div class="tab-content">
+      <div class="tab-pane fade in active" id="ホーム">
+      </div>
+
+       <div class="tab-pane fade" id="ランキング">
         <div>共有閲覧ランキング</div>
           <table>
             <thead>
@@ -25,7 +31,8 @@
                     <%= "#{i}" %>
                   </td>
                   <td>
-                    <%= sharing.user.nickname %>
+                    <%= attachment_image_tag sharing.user, :image, :fill, 50, 50, format: 'jpeg' , class: "img-circle profile-img", fallback: "/no_image.jpg/",size: '50x50'%>
+                     <%= sharing.user.nickname %>
                   </td>
                   <td>
                     <%= link_to sharing.title ,sharing_path(sharing)%>
@@ -54,7 +61,8 @@
                       <%= "#{i}" %>
                     </td>
                     <td>
-                      <%= counseling.user.nickname %>
+                       <%= attachment_image_tag counseling.user, :image, :fill, 50, 50, format: 'jpeg' , class: "img-circle profile-img", fallback: "/no_image.jpg/",size: '50x50'%>
+                        <%= counseling.user.nickname %>
                     </td>
                     <td>
                       <%= link_to counseling.title ,counseling_path(counseling)%>
@@ -84,6 +92,7 @@
                       <%= i %>
                     </td>
                     <td>
+                        <%= attachment_image_tag sharing.user, :image, :fill, 50, 50, format: 'jpeg' , class: "img-circle profile-img", fallback: "/no_image.jpg/",size: '50x50'%>
                       <%= sharing.user.nickname %>
                     </td>
                     <td>
@@ -102,6 +111,7 @@
                 <tr>
                   <th>順位</th>
                   <th>名前</th>
+                  <th>タイトル</th>
                   <th>いいね数</th>
                 </tr>
               </thead>
@@ -110,6 +120,10 @@
                   <tr>
                     <td>
                       <%= i %>
+                    </td>
+                    <td>
+                        <%= attachment_image_tag counseling.user, :image, :fill, 50, 50, format: 'jpeg' , class: "img-circle profile-img", fallback: "/no_image.jpg/",size: '50x50'%>
+                        <%= counseling.user.nickname %>
                     </td>
                     <td>
                       <%=link_to counseling.title ,counseling_path(counseling.id)  %>
@@ -121,48 +135,32 @@
                   <% end %>
               </tbody>
             </table>
-            <div>解決ランキング</div>
-            <%#= @aaa.inspect %><br>
-            <%#= @bbb.inspect %><br>
-            <table>
-              <thead>
-                <tr>
-                  <th>順位</th>
-                  <th>ユーザー名</th>
-                  <th>いいね数</th>
-                </tr>
-              </thead>
-              <tbody>
-                <%# @bbb.each do |counselingcommentlike| %>
-                  <tr>
-                    <td>
-                      
-                    </td>
-                    <td>
-                      <%#= counselingcommentlike.comment %>
-                    </td>
-                    <td>
-                      <%#= counselingcommentlike.user.nickname %>
-                    </td>
-                    <td>
-                      <%#= counselingcommentlike.counselingcommentlike%><br>
-                      <%#= counselingcomment.user.given_counseling_links.inspect %>
-                    </td>
-                  </tr>
-                  <%# end %>
 
-              </tbody>
-            </table>
-            <div>ユーザーランキング</div>
+            <div>解決ユーザーランキング</div>
+              <%#= @bbb.inspect %><br>
               <table>
                 <thead>
                   <tr>
                     <th>順位</th>
                     <th>ユーザー名</th>
-                    <th>いいね総数</th>
+                    <th>解決数</th>
                   </tr>
                 </thead>
                  <tbody>
+                  <tr>
+                    <% @user_rankings.each do |user_ranking| %>
+                    <td>
+                       <%= user_ranking[:rank] %>
+                    </td>
+                    <td>
+                       <%= attachment_image_tag user_ranking[:user], :image, :fill, 50, 50, format: 'jpeg' , class: "img-circle profile-img", fallback: "/no_image.jpg/",size: '50x50'%>
+                       <%= user_ranking[:user].nickname %>
+                    </td>
+                    <td>
+                      <%= user_ranking[:count] %>
+                    </td>
+                  </tr>
+                  <% end %>
                  </tbody>
                 </table>
               </div>
@@ -180,6 +178,7 @@
                 <% @sharingstocks.each do |sharingstock| %>
                   <tr> 
                      <td>
+                      <%= attachment_image_tag sharingstock.user, :image, :fill, 50, 50, format: 'jpeg' , class: "img-circle profile-img", fallback: "/no_image.jpg/",size: '50x50'%>
                       <%= sharingstock.user.nickname %>
                     </td>
                     <td>
@@ -203,6 +202,7 @@
                     <% @sharing_news .each do |sharing_new| %>
                       <tr>
                         <td>
+                          <%= attachment_image_tag sharing_new.user, :image, :fill, 50, 50, format: 'jpeg' , class: "img-circle profile-img", fallback: "/no_image.jpg/",size: '50x50'%>
                           <%= sharing_new.user.nickname%>
                         </td>
                         <td>
@@ -226,6 +226,7 @@
                     <% @counseling_news.each do |counseling_new| %> 
                       <tr>
                         <td>
+                          <%= attachment_image_tag counseling_new.user, :image, :fill, 50, 50, format: 'jpeg' , class: "img-circle profile-img", fallback: "/no_image.jpg/",size: '50x50'%>
                           <%= counseling_new.user.nickname%>
                         </td>
                         <td>
@@ -241,3 +242,4 @@
         </div>
       </div>
     </div>
+  </div>

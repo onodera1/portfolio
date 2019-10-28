@@ -16,7 +16,7 @@
       <h2><%= @counseling.title %></h2>
       <div class="box3">
         <p> 
-          <%= attachment_image_tag @counseling, :image, :fill, 150, 150, format: 'jpeg', class: "img-circle profile-img", fallback: "/no_image.jpg/" %> <%= link_to @user.nickname, user_path(@counseling.user.id)%>  <%= @industry.industry_name %>
+          <%= link_to @user.nickname, user_path(@counseling.user.id)%>  <%= @industry.industry_name %>
         </p>
       </div>
       <div class="box3">
@@ -37,7 +37,8 @@
                   <div class="comment-avatar">
                       <div class="comment-text">
                           <div class="comment-author clearfix">
-                              <a ><%= link_to counselingcomment.user.nickname,user_path(counselingcomment.user.id) %></a>
+                              <a > <%= attachment_image_tag counselingcomment.user, :image, :fill, 50, 50, format: 'jpeg', class: "img-circle profile-img", fallback: "/no_image.jpg/",size: '50x50' %>
+                                <%= link_to counselingcomment.user.nickname,user_path(counselingcomment.user.id) %></a>
                               <span class="comment-meta">
                                 <span class="comment-date"><%= counselingcomment.created_at.strftime('%Y/%m/%d') %></span>
                               </span>

@@ -18,19 +18,44 @@ class TopPagesController < ApplicationController
     #1@sharinglikes = current_user.given_sharing_links.size
   
 
-     @bbb = Counselingcomment.select('counselingcomments.*', 'count(counselingcommentlikes.id) AS counselingcommentlikes')
-                              .left_joins(:counselingcommentlikes)
-                              .group('counselingcomments.id')
-                              .order('counselingcommentlikes desc')
+     # @bbb = Counselingcomment.select('counselingcomments.*', 'count(counselingcommentlikes.id) AS counselingcommentlikes')
+     #                          .left_joins(:counselingcommentlikes)
+     #                          .group('counselingcomments.id')
+     #                          .order('counselingcommentlikes desc')
                           # Post.select('posts.*', 'count(favorites.id) AS favs')
                           #     .left_joins(:favorites)
                           #     .group('posts.id')
                           #     .order('favs desc')
 
 
+#    @CCC = Counselingcommentlike.joins(:counselingcomment).group('counselingcomments.user_id').order(:count).size
+    #Counselingcommentlike.joins(:counselingcomment).group("counselingcomments.user_id").each
+    # @ddd = Counselingcommentlike.joins(:counselingcomment).group("counselingcomments.user_id").size
+    
+
+    # @eee = Counselingcommentlike.joins(:counselingcomment).group("counselingcomments.user_id").count("counselingcommentlikes.id")
+    # @fff = Counselingcommentlike.joins(:counselingcomment).group("counselingcomments.user_id").order("counselingcommentlikes.id")
+    
+
+
+
+    hash = Counselingcommentlike.joins(:counselingcomment).group('counselingcomments.user_id').order(:count).size
+    users = User.find(hash.keys)
+    @user_rankings = hash.values.each_with_index.map do |count, index|
+      {
+        rank: index + 1,
+        user: users[index],
+        count: count
+      }
+    end
+
+
+
+
+
+
+
     @sharings=Sharing.find(Sharinglike.group(:sharing_id).order("count(sharing_id) desc").limit(5).pluck(:sharing_id))
-    @sharings=Sharing.limit(5)
-    @counselings=Counseling.limit(5)
     @sharingstocks = Sharingstock.all
     @sharing_viewed = Sharing.order('impressions_count DESC').take(5)
     @counseling_viewed = Counseling.order('impressions_count DESC').take(5)
@@ -38,6 +63,7 @@ class TopPagesController < ApplicationController
 
     @sharing_news =Sharing.order(created_at: "DESC").limit(5)
     @counseling_news =Counseling.order(created_at: "DESC").limit(5)
+
 
     #åbinding.pry
   end

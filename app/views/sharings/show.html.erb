@@ -35,7 +35,7 @@
      <div class="col-lg-6">
       <h3><%= @sharing.title %></h3>
       <div class="box3">
-        <p> <%= attachment_image_tag @sharing.user, :image, :fill, 50, 50, format: 'jpeg' , class: "img-circle profile-img", fallback: "/no_image.jpg/"%><%= link_to @user.nickname, user_path(@sharing.user.id)%> <%= @industry.industry_name %></p>
+        <p> <%= attachment_image_tag @sharing.user, :image, :fill, 50, 50, format: 'jpeg' , class: "img-circle profile-img", fallback: "/no_image.jpg/",size: '50x50'%><%= link_to @user.nickname, user_path(@sharing.user.id)%> <%= @industry.industry_name %></p>
 　　　　</div>
 　　　　<div class="box3">
         <p> <%= attachment_image_tag @sharing, :image, :fill, 150, 150, format: 'jpeg' %></p>
@@ -59,7 +59,9 @@
                           </div>
                             <div class="comment-text">
                                 <div class="comment-author clearfix">
-                                    <a ><%= link_to sharingcomment.user.nickname,user_path(@sharing.user.id) %></a>
+                                    <a > <%= attachment_image_tag sharingcomment.user, :image, :fill, 50, 50, format: 'jpeg', class: "img-circle profile-img", fallback: "/no_image.jpg/",size: '50x50' %>
+                                         <%= link_to sharingcomment.user.nickname,user_path(@sharing.user.id) %>
+                                    </a>
                                     <span class="comment-meta">
                                       <span class="comment-date"><%= sharingcomment.created_at.strftime('%Y/%m/%d') %></span>
                                     </span>
@@ -84,10 +86,11 @@
             <%= f.submit "送信する", class: "btn btn-lg btn-base-1 mt-20 pull-right" %>
             <% end %>
             
-       
+          <%if @sharing.user_id == @current_user.id%>
 
             <div><%= link_to "編集", edit_sharing_path(@sharing.id) %></div>
             <div><%= link_to "削除",sharing_path(@sharing.id) ,method: :delete, "data-confirm" => "本当に削除しますか？" %></div>
+          <% end %>  
             <div><%= link_to "戻る ", sharings_path  %></div>
   </div>
 </div>

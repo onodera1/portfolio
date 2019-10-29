@@ -22,6 +22,12 @@
           <li class="">
             <%= link_to 'TOPページ', root_path, data:{"turbolinks" => false} %>
           </li>
+
+          <li class="">
+                <%= link_to " About" ,about_pages_path %>
+          </li>
+
+
           <li class="">
             <li><a class="dropdown-toggle" data-toggle="dropdown">投稿<b class="caret"></b></a>
               <ul class="dropdown-menu">
@@ -30,6 +36,8 @@
               </ul>
             </li>
           </li>
+
+           
           <li class="">
                <li><a class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user" aria-hidden="true">
                </span><b class="caret"></b></a>
@@ -52,6 +60,9 @@
         <% else %>
           <li class="">
             <%= link_to 'TOPページ', root_path %>
+          </li>
+          <li class="">
+            <%= link_to " About" ,about_pages_path %>
           </li>
           <li class="">
             <%= link_to "新規登録", new_user_registration_path %>

@@ -14,11 +14,10 @@
 			 <% end %>
 			</div>
 		  <div class="col-lg-4">
-		  	 <%= @counseling.inspect %>
 		  	<div>相談閲覧ランキング</div>
-            <table>
+            <table class="table">
               <thead>
-                <tr>
+                <tr class="warning">
                   <th>順位</th>
                   <th>名前</th>
                   <th>タイトル</th>
@@ -45,11 +44,11 @@
                   <% end %>
               </tbody>
             </table>
-			        <div>相談いいねランキング</div>
-            <table>
+			      <div>相談いいねランキング</div>
+            <table class="table">
 
               <thead>
-                <tr>
+                <tr class="warning">
                   <th>順位</th>
                   <th>名前</th>
                   <th>タイトル</th>
@@ -77,11 +76,11 @@
               </tbody>
             </table>
 
-			<div>解決ユーザーランキング</div>
-              <%#= @bbb.inspect %><br>
-              <table>
+			      <div>解決ユーザーランキング</div>
+              <%#= @bbb.inspect %>
+              <table class="table">
                 <thead>
-                  <tr>
+                  <tr class="warning">
                     <th>順位</th>
                     <th>ユーザー名</th>
                     <th>解決数</th>

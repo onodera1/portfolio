@@ -5,7 +5,7 @@
     <div class="col-lg-6"> 
 		    <div>投稿した共有一覧</div>
 		    <% @sharings.each do |sharing| %>
-		     <div class="panel panel-default">
+		     <div class="panel panel-warning">
 	         <div class="panel-body">
 	  		     <%= link_to sharing.title,sharing_path(sharing.id) %>
 				  </div> 

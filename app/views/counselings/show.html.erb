@@ -12,8 +12,10 @@
       <% end %>
   </div>
     <div class="col-lg-6">
-      <%= @counseling.inspect %>
-      <h2><%= @counseling.title %></h2>
+      <%#= @counseling.inspect %>
+      <div class="box90">
+        <%= @counseling.title %>
+      </div>
       <div class="box3">
         <p> 
           <%= link_to @user.nickname, user_path(@counseling.user.id)%>  <%= @industry.industry_name %>

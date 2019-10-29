@@ -27,17 +27,17 @@
               <tbody>
                 <% @counseling_viewed.each.with_index(1) do |counseling, i| %>
                   <tr>
-                    <td>
+                    <td style="width:15%">
                       <%= "#{i}" %>
                     </td>
-                   <td>
+                   <td style="width:30%">
                     <%= attachment_image_tag counseling.user, :image, :fill, 100, 100, format: 'jpeg' , class: "img-circle pull-left profile-img", fallback: "/no_image.jpg/",size: '50x50'%>
                    	<%= counseling.user.nickname%>
                    </td>
-                    <td>
+                    <td style="width:30%">
                       <%= link_to counseling.title ,counseling_path(counseling)%>
                     </td>
-                    <td>
+                    <td style="width:15%">
                       <%=  counseling.impressions_count %>
                     </td>
                   </tr>
@@ -58,17 +58,17 @@
               <tbody>
                 <% @icounselings.each.with_index(1) do |counseling,i| %>
                   <tr>
-                    <td>
+                    <td style="width:15%">
                       <%= i %>
                     </td>
-                    <td>
+                    <td style="width:30%">
                         <%= attachment_image_tag counseling.user, :image, :fill, 50, 50, format: 'jpeg' , class: "img-circle profile-img", fallback: "/no_image.jpg/",size: '50x50'%>
                         <%= counseling.user.nickname %>
                     </td>
-                    <td>
+                    <td style="width:30%">
                       <%=link_to counseling.title ,counseling_path(counseling.id)  %>
                     </td>
-                    <td>
+                    <td style="width:20%">
                       <%= counseling.counselinglikes.length%>
                     </td>
                   </tr>
@@ -89,14 +89,14 @@
                  <tbody>
                   <tr>
                     <% @user_rankings.each do |user_ranking| %>
-                    <td>
+                    <td style="width:15%">
                        <%= user_ranking[:rank] %>
                     </td>
-                    <td>
+                    <td style="width:30%">
                        <%= attachment_image_tag user_ranking[:user], :image, :fill, 50, 50, format: 'jpeg' , class: "img-circle profile-img", fallback: "/no_image.jpg/",size: '50x50'%>
                        <%= user_ranking[:user].nickname %>
                     </td>
-                    <td>
+                    <td style="width:15%">
                       <%= user_ranking[:count] %>
                     </td>
                   </tr>

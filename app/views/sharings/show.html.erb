@@ -38,7 +38,10 @@
 
 
      <div class="col-lg-6">
-      <h3><%= @sharing.title %></h3>
+      <div class="box90">
+        <p><%= @sharing.title %></p>
+      </div>
+      
       <div class="box3">
         <p> <%= attachment_image_tag @sharing.user, :image, :fill, 50, 50, format: 'jpeg' , class: "img-circle profile-img", fallback: "/images/no_image.jpg",size: '50x50'%><%= link_to @user.nickname, user_path(@sharing.user.id)%> <%= @industry.industry_name %></p>
 　　　　</div>

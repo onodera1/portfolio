@@ -10,7 +10,7 @@
       </ul>
     <div class="tab-content ">
       <div class="tab-pane fade in active " id="ランキング">
-        <div>共有閲覧ランキング</div>
+        <h4>共有閲覧ランキング</h4>
           <table class="table">
             <thead >
               <tr class="warning">
@@ -40,7 +40,7 @@
                 <% end %>
             </tbody>
           </table>
-          <div>相談閲覧ランキング</div>
+          <h4>相談閲覧ランキング</h4>
           <table class="table">
 
               <thead>
@@ -72,7 +72,7 @@
               </tbody>
             </table>
 
-            <div>共有いいねランキング</div>
+            <h4>共有いいねランキング</h4>
             <table class="table">
               <thead>
                 <tr class="warning">
@@ -102,7 +102,7 @@
                   <% end %>
               </tbody>
             </table>
-            <div>相談いいねランキング</div>
+            <h4>相談いいねランキング</h4>
             <table class="table">
               <thead>
                 <tr class="warning">
@@ -133,7 +133,7 @@
               </tbody>
             </table>
 
-            <div>解決ユーザーランキング</div>
+            <h4>解決ユーザーランキング</h4>
               <%#= @bbb.inspect %><br>
              <table class="table">
                 <thead>
@@ -163,7 +163,7 @@
               </div>
 
             <div class="tab-pane fade" id="お気に入り">
-            <div>お気に入り一覧</div>
+            <h4>お気に入り一覧</h4>
             <table class="table">
               <thead>
                 <tr class="warning">
@@ -187,7 +187,7 @@
             </table>
           </div>
             <div class="tab-pane fade " id="新着一覧">
-             <div>新着共有</div>
+             <h4>新着共有</h4>
              <table class="table">
                   <thead>
                     <tr class="warning">
@@ -210,7 +210,7 @@
                   </tbody>
                 </table>
                 <div><%= link_to " 共有内容一覧" ,sharings_path %></div>
-              <div>新着相談</div>
+              <h4>新着相談</h4>
                <%#= @counseling_news.inspect %>
                 <table class="table">
                   <thead>

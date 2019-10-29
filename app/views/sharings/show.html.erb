@@ -12,18 +12,23 @@
           <% end %>
         <% end %>
       <% end %><br>
+
+
+      
+
       <% if user_signed_in? & current_user.already_sharingstocked?(@sharing) %>
         <%= link_to sharing_sharingstock_path(@sharing), method: :delete do %>
-         <i >保存を取り消す</i>
+         <i >保存中</i>
         <% end %>
       <% elsif user_signed_in? %>
         <%= link_to sharing_sharingstocks_path(@sharing), method: :post do %>
-          <span class="st-Header_stock mr-2 py-2"> <i >保存する</i></span>
+            <i ><span class="glyphicon glyphicon-book" aria-hidden="true"></i>
+         </span>
         <% end %>
       <% end %>
        <% if current_user != @sharing.user %>
         <% if @sharing.user.followed_by?(current_user) %>
-          <p><%=link_to "フォロー済み", user_relationships_path(@sharing.user.id), method: :delete %></p>
+          <p><%=link_to "フォロー中", user_relationships_path(@sharing.user.id), method: :delete %></p>
         <% else %>
           <p><%=link_to "フォローする", user_relationships_path(@sharing.user.id), method: :post %></p>
         <% end %>

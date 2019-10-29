@@ -1,4 +1,5 @@
 class SharingsController < ApplicationController
+  before_action :authenticate_user!, only: [:show]
   def new
   	@sharing = Sharing.new
     @industries =Industry.all

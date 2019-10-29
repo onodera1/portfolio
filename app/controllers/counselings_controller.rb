@@ -1,4 +1,5 @@
 class CounselingsController < ApplicationController
+    before_action :authenticate_user!, only: [:show]
   def new
     #binding.pry
   	@counseling = Counseling.new

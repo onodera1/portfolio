@@ -1,4 +1,4 @@
-class SharingsController < ApplicationController
+  class SharingsController < ApplicationController
   before_action :authenticate_user!, only: [:show]
   def new
   	@sharing = Sharing.new
@@ -14,7 +14,6 @@ class SharingsController < ApplicationController
 	    redirect_to sharings_path
     else
       @user=current_user
-      @sharings=Sharing.all
       render :new
     end
   end

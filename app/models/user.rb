@@ -20,10 +20,15 @@ class User < ApplicationRecord
   has_many :passive_relationships, class_name: "Relationship", foreign_key: :follower_id
   has_many :followers, through: :passive_relationships, source: :following
   attachment :image
-
   has_many :given_counseling_links, class_name: "Counselingcommentlike", through: :counselingcomments, source: :counselingcommentlikes
-  
   has_many :given_sharing_links, class_name: "Sharinglike", through: :sharings, source: :sharinglikes
+
+
+  validates :last_name, length: { minimum: 1 }
+  validates :nickname, length: { minimum: 1 }
+  validates :phone_number, length: { minimum: 1 }
+  validates :email, length: { minimum: 1 }
+
 
 
   def self.search(search)

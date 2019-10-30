@@ -30,12 +30,22 @@ header {
    margin-bottom:60px;
 }
 
+.main-container2 {
+  background-image: url("/images/beautiful-multi-color-watercolor-texture-9-1560x2084.jpg");
+  widthh: 100%;
+  height: 400px;
+  background-size: cover;
+}
+
+
 .main-container {
   background-image: url("/images/P1030538_EDIT_TP_V.jpg");
   widthh: 100%;
-  height: 300px;
+  height: 400px;
   background-size: cover;
 }
+
+
 
 .dropdown-menu{
   background-color:#EEE8AA !important;

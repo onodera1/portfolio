@@ -3,16 +3,27 @@
     <div class="col-lg-3"> 
     </div>
      <div class="col-lg-6"> 
-		<div>フォロー 一覧</div>
-		<% @users.each do |user| %>
-		  <div>名前</div>
-      <%= attachment_image_tag user, :image, :fill, 50, 50, format: 'jpeg' , class: "img-circle profile-img", fallback: "/images/no_image.jpg",size: '50x50'%>
-		  <%= link_to user.nickname, user_path(user.id)%>
-		<%end%>
+      <h3>フォロー 一覧</h3>
+      <table class="table">
+        <thead>
+          <tr class="warning">
+            <th>名前</th>
+          </tr>
+        </thead>
+        <tbody> 
+          <% @users.each do |user| %>
+            <tr> 
+               <td>
+                 <%= attachment_image_tag user, :image, :fill, 50, 50, format: 'jpeg' , class: "img-circle profile-img", fallback: "/images/no_image.jpg",size: '50x50'%>
+                 <%= link_to user.nickname, user_path(user.id)%>
+               </td>
+            </tr>
+         <%end%>
+        </tbody>
+       </table>
+       <div><%= link_to '戻る', :back %></div>
     </div>
     <div class="col-lg-3"> 
     </div>
   </div>
 </div>
-
-

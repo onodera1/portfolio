@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
-RSpec.describe counseling, "モデルに関するテスト", type: :model do
+RSpec.describe Sharing, 'モデルに関するテスト', type: :model do
   describe 'アソシエーション' do
-    it "Userモデルに属している" do
+    it 'Userモデルに属している' do
       is_expected.to belong_to(:user)
     end
   end
@@ -11,20 +13,21 @@ RSpec.describe counseling, "モデルに関するテスト", type: :model do
     context "保存できる場合" do
       it "user_idを入れて保存" do
         user = FactoryBot.create(:user)
-        expect(FactoryBot.create(:counseling, user_id: user.id)).to be_valid
+        expect(FactoryBot.create(:sharing, user_id: user.id)).to be_valid
       end
     end
     context "保存できない場合" do
       it "user_idを保存していない" do
-        expect(FactoryBot.build(:counseling)).to_not be_valid
+        expect(FactoryBot.build(:sharing)).to_not be_valid
       end
       it "titleが空欄" do
-        expect(FactoryBot.build(:counseling, :no_title)).to_not be_valid
+        expect(FactoryBot.build(:sharing, :no_title)).to_not be_valid
       end
       it "bodyが空欄" do
-        expect(FactoryBot.build(:counseling, :no_body)).to_not be_valid
+        expect(FactoryBot.build(:sharing, :no_body)).to_not be_valid
       end
-    
+
+
     end
   end
 end

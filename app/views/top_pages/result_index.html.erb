@@ -1,25 +1,39 @@
 
 <div class="container">
 	 <div class="row">
-	   <div class="col-lg-3"> 
+	 	 <h3>検索結果一覧</h3>
+	   <div class="col-lg-4"> 
+	   	 <div class=head>共有内容</div>
+	   	    <% @sharings.each do |sharing| %>
+	     	<div class="panel panel-default">
+	     		<div class="panel-body">
+   					<%= link_to sharing.title, sharing %>
+					</div>
+				</div>
+				　<% end %>
 	   </div>
-	   <div class="col-lg-6"> 
-	     <div>検索結果</div>
-	      <div><% @sharings.each do |sharing| %>
-	        <%= link_to sharing.title, sharing %>
-				<% end %></div><br>
-				
-				<div><% @counselings.each do |counseling| %>
-	  			<%= link_to counseling.title, counseling %>
-				<% end %><div>
-
-				<div><% @users.each do |user| %>
-	  			<%= link_to user.nickname, user %>
-				<% end %><div>
-	    </div>
-	    <div class="col-lg-3"> 
-	    </div>
+	   <div class="col-lg-4"> 
+		 	<div>相談内容</div>
+		 		<% @counselings.each do |counseling| %>
+				<div class="panel panel-default">
+	     	  <div class="panel-body">
+						<%= link_to counseling.title, counseling %>
+					</div>
+				</div>
+	      <% end %>
+			</div>
+	   <div class="col-lg-3"> 
+	     <div>ユーザー名</div>	
+			   <% @users.each do |user| %>
+				 <div class="panel panel-default">
+	     	   <div class="panel-body">
+	     	   	<%= attachment_image_tag user, :image, :fill, 50, 50, format: 'jpeg' , class: "img-circle profile-img", fallback: "/images/no_image.jpg",size: '50x50'%>
+					   <%= link_to user.nickname, user %>
+					</div>
+				</div>
+				<% end %>
 	  </div>
+	 </div>
 </div>
 
 

@@ -5,6 +5,8 @@ class Counseling < ApplicationRecord
 	has_many :counselingcomments,dependent: :destroy
   attachment :image
   is_impressionable counter_cache: true
+  validates :title, length: { in: 1..10 }
+  validates :body, length: { in: 1..300 }
 
 	def self.search(search)
     if search

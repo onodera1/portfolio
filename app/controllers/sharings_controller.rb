@@ -6,12 +6,20 @@ class SharingsController < ApplicationController
   end
 
   def create
+    flash[:notice] = "You have creatad sharing successfully"
 	  @sharing = Sharing.new(sharing_params)
     #byebug
     @sharing.user_id = current_user.id
-	  @sharing.save!
-	  redirect_to sharings_path
+	  if @sharing.save
+	    redirect_to sharings_path
+    else
+      @user=current_user
+      @sharings=Sharing.all
+      render :new
+    end
   end
+
+
 
   def index
     @sharings = Sharing.page(params[:page]).reverse_order
@@ -34,10 +42,16 @@ class SharingsController < ApplicationController
   end
 
   def update
-    sharing = Sharing.find(params[:id])
-    sharing.update(sharing_params)
-    redirect_to sharing_path(sharing.id)
+    @sharing = Sharing.find(params[:id])
+    if @sharing.update(sharing_params)
+       redirect_to sharing_path(sharing.id)
+    else  @user=current_user
+          render :edit
+    end
   end
+
+
+
   def destroy
     @sharing=Sharing.find(params[:id])
     @sharing.destroy

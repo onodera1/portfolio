@@ -6,10 +6,15 @@ class CounselingsController < ApplicationController
     @industries =Industry.all
   end
   def create
-    counseling = Counseling.new(counseling_params)
-    counseling.user_id = current_user.id
-    counseling.save
+    @counseling = Counseling.new(counseling_params)
+    @counseling.user_id = current_user.id
+    if@counseling.save
     redirect_to counselings_path
+    else
+      @user=current_user
+      @counselings=Counseling.all
+      render :new
+    end
   end
 
   def index
@@ -47,10 +52,16 @@ class CounselingsController < ApplicationController
   end
 
   def update 
-    counseling = Counseling.find(params[:id])
-    counseling.update(counseling_params)
-    redirect_to counseling_path(counseling.id)
+    @counseling = Counseling.find(params[:id])
+    if @counseling.update(counseling_params)
+    redirect_to counseling_path(@counseling.id)
+    else
+      @user=current_user
+      render :edit
+    end
   end
+
+
   def destroy
     @counseling =Counseling.find(params[:id])
     @counseling.destroy

@@ -3,6 +3,11 @@
     <div class="col-lg-3"> 
     </div>
     <div class="col-lg-6"> 
+      <% if @sharing.errors.any? %>
+        <% @sharing.errors.full_messages.each do |message| %>
+          <%= message %>
+        <% end %>
+      <% end %>
       <h1>共有内容の登録</h1>
       <%= form_for(@sharing)do |f| %>
         <h4>タイトル</h4>

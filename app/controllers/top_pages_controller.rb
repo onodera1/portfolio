@@ -23,12 +23,23 @@ class TopPagesController < ApplicationController
     @sharing_news =Sharing.order(created_at: "DESC").limit(5)
     @counseling_news =Counseling.order(created_at: "DESC").limit(5)
     #åbinding.pry
+    @industries = Industry.all
   end
 
   def result_index
   	@sharings = Sharing.search(params[:search])
     @counselings = Counseling.search(params[:search])
     @users = User.search(params[:search])
+  end
+
+  def industry_pages
+     
+      industry_id  = params[:industry_id]
+      #counseling_industries = 
+      @sharings = Sharing.where(industry_id: industry_id )
+      @sharings = Sharing.page(params[:page]).reverse_order.per(10)
+      @counselings  = Counseling.where(industry_id: industry_id)
+      @counselings = Counseling.page(params[:page]).reverse_order.per(10)
   end
 end
 

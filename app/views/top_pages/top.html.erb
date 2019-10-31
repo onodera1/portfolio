@@ -5,8 +5,9 @@
       <ul class="nav nav-tabs ">
         <li class="active ">
         <a href="#ホーム"data-toggle="tab ">ランキング</a></li>
-        <li><a href="#お気に入り"data-toggle="tab">お気に入りリスト</a></li>
         <li><a href="#新着一覧"data-toggle="tab">新着一覧</a></li>
+        <li><a href="#業種一覧"data-toggle="tab">業種一覧</a></li>
+         <li><a href="#ストック"data-toggle="tab">ストックリスト</a></li>
       </ul>
     <div class="tab-content ">
       <div class="tab-pane fade in active " id="ランキング">
@@ -161,8 +162,8 @@
                 </table>
               </div>
 
-            <div class="tab-pane fade" id="お気に入り">
-            <h4>お気に入り一覧</h4>
+            <div class="tab-pane fade" id="ストック">
+            <h4>ストックリスト</h4>
             <table class="table">
               <thead>
                 <tr class="warning">
@@ -234,9 +235,33 @@
               </table>
               <div><%= link_to " 相談内容一覧" ,counselings_path %></div>
             </div>
+
+             <div class="tab-pane fade " id="業種一覧">
+               <table class="table">
+                  <thead>
+                    <tr class="warning">
+                      <th>業種名</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <% @industries.each do |industry| %>
+                      <tr>
+                        <td>
+                          <%= link_to industry.industry_name, industry_pages_path(industry_id: industry.id) %>
+                        </td>
+                      </tr>
+                    <% end %>
+                  </tbody>
+                </table>
+              </div>
+
+              <%#= link_to indusutry.industry_name industry_pages_path%>
+             </div>
+
           </div>
         </div>
       </div>
     </div>
   </div>
+</div>
 

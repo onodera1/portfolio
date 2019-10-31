@@ -25,6 +25,7 @@
   	#@sharings=Sharing.all
     @sharinglikes=Sharing.find(Sharinglike.group(:sharing_id).order("count(sharing_id) desc").limit(5).pluck(:sharing_id))
     @most_viewed = Sharing.order('impressions_count DESC').take(5)
+
   end
 
   def show

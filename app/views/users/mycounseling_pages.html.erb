@@ -3,14 +3,17 @@
     <div class="col-lg-3"> 
     </div>
      <div class="col-lg-6"> 
-		<div>投稿した相談一覧</div>
-		<% @counselings.each do |counseling| %>
-		  <div>タイトル</div>
-		  <%= link_to counseling.title,counseling_path(counseling.id) %>
-		<%end%>
+  	 <div>投稿した相談一覧</div>
+    		<% @counselings.each do |counseling| %>
+          <div class="panel panel-warning">
+            <div class="panel-body">
+    		      <%= link_to counseling.title,counseling_path(counseling.id) %>
+            </div> 
+          </div>
+    		<%end%>
 		  <div><%= link_to '戻る', :back %></div>
-      </div>
-    <div class="col-lg-3"> 
-    </div>
-  </div>
+     </div>
+     <div class="col-lg-3"> 
+     </div>
+   </div>
 </div>

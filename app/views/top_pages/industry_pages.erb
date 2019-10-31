@@ -1,0 +1,29 @@
+
+<div class="container">
+	 <div class="row">
+	 	 <%#= @counselings.inspect %>
+     <%#= @sharings.inspect %>
+	 	 <h3>業種一覧</h3>
+	   <div class="col-lg-6"> 
+	   	 <div>共有内容</div> 
+	     	   	<% @sharings.each do |sharing| %>
+	     	   		<div class="panel panel-default">
+	     	   			<div class="panel-body">
+	     	   		<%= link_to sharing.title ,sharing_path(sharing.id) %>
+	     	   		  </div>
+	     	   		</div>
+	         <% end %> <%#= paginate @sharings %>
+	   </div>
+	   <div class="col-lg-6"> 
+		 <div>相談内容</div>
+				   <% @counselings.each do |counseling| %>
+				    <div class="panel panel-default">
+	     	    	<div class="panel-body">
+	     	     		<%= link_to counseling.title ,counseling_path(counseling.id) %>
+	     	     			
+	     	     		</div>
+	         </div>
+	         <% end %> <%= paginate @counselings %>
+		 </div>
+	 </div>
+</div>

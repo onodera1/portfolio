@@ -13,6 +13,7 @@ Rails.application.routes.draw do
    get'result_index'=>'top_pages#result_index'
    root 'top_pages#top'
    get'about_pages'=>'top_pages#about_pages'
+   get'industry_pages'=>'top_pages#industry_pages'
    resources :counselings do
      resources :counselinglikes, only: [:create, :destroy]
      resources :counselingcomments, only: [:create, :destroy]do

@@ -31,7 +31,7 @@
                       <%= "#{i}" %>
                     </td>
                    <td style="width:30%">
-                    <%= attachment_image_tag counseling.user, :image, :fill, 100, 100, format: 'jpeg' , class: "img-circle pull-left profile-img", fallback: "/no_image.jpg/",size: '50x50'%>
+                    <%= attachment_image_tag counseling.user, :image, :fill, 100, 100, format: 'jpeg' , class: "img-circle pull-left profile-img", fallback: "/images/no_image.jpg",size: '50x50'%>
                    	<%= counseling.user.nickname%>
                    </td>
                     <td style="width:30%">
@@ -47,6 +47,7 @@
 			      <div>相談いいねランキング</div>
             <table class="table">
 
+   
               <thead>
                 <tr class="warning">
                   <th>順位</th>
@@ -62,7 +63,8 @@
                       <%= i %>
                     </td>
                     <td style="width:30%">
-                        <%= attachment_image_tag counseling.user, :image, :fill, 50, 50, format: 'jpeg' , class: "img-circle profile-img", fallback: "/no_image.jpg/",size: '50x50'%>
+                        <%= attachment_image_tag counseling.user, :image, :fill, 50, 50, format: 'jpeg' , class: "img-circle profile-img", fallback: "/images/no_image.jpg",size: '50x50'%>
+
                         <%= counseling.user.nickname %>
                     </td>
                     <td style="width:30%">
@@ -93,7 +95,7 @@
                        <%= user_ranking[:rank] %>
                     </td>
                     <td style="width:30%">
-                       <%= attachment_image_tag user_ranking[:user], :image, :fill, 50, 50, format: 'jpeg' , class: "img-circle profile-img", fallback: "/no_image.jpg/",size: '50x50'%>
+                       <%= attachment_image_tag user_ranking[:user], :image, :fill, 50, 50, format: 'jpeg' , class: "img-circle profile-img", fallback: "/images/no_image.jpg",size: '50x50'%>
                        <%= user_ranking[:user].nickname %>
                     </td>
                     <td style="width:15%">

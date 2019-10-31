@@ -16,9 +16,9 @@
 		 	<div>相談内容</div>
 		 		<% @counselings.each do |counseling| %>
 				<div class="panel panel-default">
-	     	  <div class="panel-body">
-						<%= link_to counseling.title, counseling %>
-					</div>
+	     		<div class="panel-body">
+			　　　	<%= link_to counseling.title, counseling %>
+			　　　</div>
 				</div>
 	      <% end %>
 			</div>
@@ -34,6 +34,7 @@
 				<% end %>
 	  </div>
 	 </div>
+	  <%#= paginate @ %>
 </div>
 
 

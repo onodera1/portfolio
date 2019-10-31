@@ -11,7 +11,6 @@
           </div>
       <% end %>
     </div>
-
     <div class="col-lg-4">
       <div>共有閲覧ランキング</div>
       <table class="table">
@@ -24,20 +23,20 @@
           </tr>
         </thead>
         <tbody>
-          <% @most_viewed.each.with_index(1) do |rank, i| %>
+          <% @most_viewed.each.with_index(1) do |sharing, i| %>
             <tr>
               <td style="width:15%">
                 <%= "#{i}" %>
               </td>
               <td style="width:30%">
-                <div><%= attachment_image_tag rank.user, :image, :fill, 50, 50, format: 'jpeg' , class: "img-circle profile-img",fallback: "/images/no_image.jpg",size: '50x50'%></div>
-                <div><%= rank.user.nickname %></div>
+                <div><%= attachment_image_tag sharing.user, :image, :fill, 50, 50, format: 'jpeg' , class: "img-circle profile-img",fallback: "/images/no_image.jpg",size: '50x50'%></div>
+                <div><%= sharing.user.nickname %></div>
               </td>
               <td style="width:30%">
-                <%= rank.title %>
+                <%= link_to sharing.title ,sharing_path(sharing.id)%>
               </td>
                <td style="width:15%">
-                <%= rank.impressions_count %>
+                <%= sharing.impressions_count %>
               </td>
             </tr>
           <% end %>

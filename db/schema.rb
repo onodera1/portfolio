@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_17_093933) do
+ActiveRecord::Schema.define(version: 2019_10_31_095131) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -38,14 +38,14 @@ ActiveRecord::Schema.define(version: 2019_10_17_093933) do
     t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
   end
 
-  create_table "counselingcommentlikes", force: :cascade do |t|
+  create_table "counseling_comment_likes", force: :cascade do |t|
     t.integer "user_id"
-    t.integer "counselingcomment_id"
+    t.integer "counseling_comment_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "counselingcomments", force: :cascade do |t|
+  create_table "counseling_comments", force: :cascade do |t|
     t.text "comment"
     t.integer "user_id"
     t.integer "counseling_id"
@@ -53,7 +53,7 @@ ActiveRecord::Schema.define(version: 2019_10_17_093933) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "counselinglikes", force: :cascade do |t|
+  create_table "counseling_likes", force: :cascade do |t|
     t.integer "user_id"
     t.integer "counseling_id"
     t.datetime "created_at", null: false
@@ -112,7 +112,7 @@ ActiveRecord::Schema.define(version: 2019_10_17_093933) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "sharingcomments", force: :cascade do |t|
+  create_table "sharing_comments", force: :cascade do |t|
     t.text "comment"
     t.integer "user_id"
     t.integer "sharing_id"
@@ -120,7 +120,14 @@ ActiveRecord::Schema.define(version: 2019_10_17_093933) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "sharinglikes", force: :cascade do |t|
+  create_table "sharing_likes", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "sharing_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "sharing_stocks", force: :cascade do |t|
     t.integer "user_id"
     t.integer "sharing_id"
     t.datetime "created_at", null: false
@@ -138,13 +145,6 @@ ActiveRecord::Schema.define(version: 2019_10_17_093933) do
     t.datetime "updated_at", null: false
     t.index ["industry_id"], name: "index_sharings_on_industry_id"
     t.index ["user_id"], name: "index_sharings_on_user_id"
-  end
-
-  create_table "sharingstocks", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "sharing_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|

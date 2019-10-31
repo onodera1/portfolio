@@ -1,9 +1,9 @@
 class Sharing < ApplicationRecord
 	belongs_to :industry
 	belongs_to :user
-	has_many :sharinglikes, dependent: :destroy
-	has_many :sharingcomments, dependent: :destroy
-	has_many :sharingstocks,dependent: :destroy
+	has_many :sharing_likes, dependent: :destroy
+	has_many :sharing_comments, dependent: :destroy
+	has_many :sharing_stocks,dependent: :destroy
   attachment :image
   is_impressionable counter_cache: true
   validates :title, length: { in: 1..10 }

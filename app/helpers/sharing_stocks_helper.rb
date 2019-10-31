@@ -1,0 +1,2 @@
+module SharingStocksHelper
+end

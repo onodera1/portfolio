@@ -23,7 +23,7 @@
   def index
     @sharings = Sharing.page(params[:page]).reverse_order
   	#@sharings=Sharing.all
-    @sharinglikes=Sharing.find(Sharinglike.group(:sharing_id).order("count(sharing_id) desc").limit(5).pluck(:sharing_id))
+    @sharinglikes=Sharing.find(SharingLike.group(:sharing_id).order("count(sharing_id) desc").limit(5).pluck(:sharing_id))
     @most_viewed = Sharing.order('impressions_count DESC').take(5)
 
   end
@@ -33,9 +33,9 @@
     impressionist(@sharing, nil, :unique => [:session_hash])
     @industry =@sharing.industry
     @user = @sharing.user
-    @sharinglike = Sharinglike.new
-    @sharingcomment = Sharingcomment.new
-    @sharingstock = Sharingstock.new
+    @sharinglike = SharingLike.new
+    @sharingcomment = SharingComment.new
+    @sharingstock = SharingStock.new
   end
   def edit
     @sharing = Sharing.find(params[:id])

@@ -1,8 +1,8 @@
 class Counseling < ApplicationRecord
 	belongs_to :industry
 	belongs_to :user
-	has_many :counselinglikes, dependent: :destroy
-	has_many :counselingcomments,dependent: :destroy
+	has_many :counseling_likes, dependent: :destroy
+	has_many :counseling_comments,dependent: :destroy
   attachment :image
   is_impressionable counter_cache: true
   validates :title, length: { in: 1..10 }

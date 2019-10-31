@@ -20,11 +20,11 @@ class CounselingsController < ApplicationController
   def index
   	@counselings=Counseling.all
     @counselings = Counseling.page(params[:page]).reverse_order
-    @icounselings=Counseling.find(Counselinglike.group(:counseling_id).order("count(counseling_id) desc").limit(5).pluck(:counseling_id))
+    @icounselings=Counseling.find(CounselingLike.group(:counseling_id).order("count(counseling_id) desc").limit(5).pluck(:counseling_id))
     #@counselinglikes=Counseling.find(Counselinglike.group(:counseling_id).order("count(counseling_id) desc").limit(5).pluck(:counseling_id))
-    @counselingcommentlikes=Counselingcomment.find(Counselingcommentlike.group(:counselingcomment_id).order("count(counselingcomment_id) desc").limit(5).pluck(:counselingcomment_id))
+    @counselingcommentlikes=CounselingComment.find(CounselingCommentLike.group(:counseling_comment_id).order("count(counseling_comment_id) desc").limit(5).pluck(:counseling_comment_id))
     @counseling_viewed = Counseling.order('impressions_count DESC').take(5)
-      hash = Counselingcommentlike.joins(:counselingcomment).group('counselingcomments.user_id').order('count(counselingcomments.user_id) desc').size
+      hash = CounselingCommentLike.joins(:counseling_comment).group('counseling_comments.user_id').order('count(counseling_comments.user_id) desc').size
       users = User.find(hash.keys)
       @user_rankings = hash.values.each_with_index.map do |count, index|
         {
@@ -42,9 +42,9 @@ class CounselingsController < ApplicationController
     impressionist(@counseling, nil, :unique => [:session_hash])
     @industry = @counseling.industry
     @user = @counseling.user
-    @counselinglike = Counselinglike.new
-    @counselingcomment = Counselingcomment.new
-    @counselingcommentlike = Counselingcommentlike.new
+    @counselinglike = CounselingLike.new
+    @counselingcomment = CounselingComment.new
+    @counselingcommentlike = CounselingCommentLike.new
   end
 
   def edit

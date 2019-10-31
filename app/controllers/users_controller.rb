@@ -37,7 +37,7 @@ class UsersController < ApplicationController
   def mysharingstock_pages
     @user =User.find(params[:user_id])
     #byebug
-    @sharingstocks = @user.sharingstocks
+    @sharingstocks = @user.sharing_stocks
   end
 
   def follows

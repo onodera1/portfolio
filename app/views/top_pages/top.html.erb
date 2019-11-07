@@ -24,14 +24,14 @@
             <tbody>
               <% @sharing_viewed.each.with_index(1) do |sharing, i| %>
                 <tr>
-                  <td style="width:10%">
+                  <td class="td1">
                     <%= "#{i}" %>
                   </td>
-                  <td style="width:30%">
+                  <td class="td2">
                     <%= attachment_image_tag sharing.user, :image, :fill, 50, 50, format: 'jpeg' , class: "img-circle profile-img", fallback: "/images/no_image.jpg",size: '50x50'%>
                      <%= sharing.user.nickname %>
                   </td>
-                  <td style="width:30%">
+                  <td class="td2">
                     <%= link_to sharing.title,sharing_path(sharing)%>
                   </td>
                   <td>
@@ -54,14 +54,14 @@
               <tbody>
                 <% @counseling_viewed.each.with_index(1) do |counseling, i| %>
                   <tr>
-                    <td style="width:10%">
+                    <td class="td1">
                       <%= "#{i}" %>
                     </td>
-                    <td style="width:30%">
+                    <td class="td2">
                        <%= attachment_image_tag counseling.user, :image, :fill, 50, 50, format: 'jpeg' , class: "img-circle profile-img",  fallback: "/images/no_image.jpg",size: '50x50'%>
                         <%= counseling.user.nickname %>
                     </td>
-                    <td style="width:30%">
+                    <td class="td2">
                       <%= link_to counseling.title ,counseling_path(counseling)%>
                     </td>
                     <td>
@@ -85,14 +85,14 @@
               <tbody>
                 <% @sharings.each.with_index(1) do |sharing,i| %>
                   <tr>
-                    <td style="width:10%">
+                    <td class="td1">
                       <%= i %>
                     </td>
-                    <td style="width:30%">
+                    <td class="td2">
                         <%= attachment_image_tag sharing.user, :image, :fill, 50, 50, format: 'jpeg' , class: "img-circle profile-img",fallback: "/images/no_image.jpg",size: '50x50'%>
                       <%= sharing.user.nickname %>
                     </td>
-                    <td style="width:30%">
+                    <td class="td2">
                       <%=link_to sharing.title ,sharing_path(sharing.id)  %>
                     </td>
                     <td>
@@ -115,14 +115,14 @@
               <tbody>
                 <% @counselings.each.with_index(1) do |counseling,i| %>
                   <tr>
-                    <td style="width:10%">
+                    <td class="td1">
                       <%= i %>
                     </td>
-                     <td style="width:30%">
+                     <<td class="td2">
                         <%= attachment_image_tag counseling.user, :image, :fill, 50, 50, format: 'jpeg' , class: "img-circle profile-img", fallback: "/images/no_image.jpg",size: '50x50'%>
                         <%= counseling.user.nickname %>
                     </td>
-                    <td style="width:30%">
+                    <td class="td2">
                       <%=link_to counseling.title ,counseling_path(counseling.id)  %>
                     </td>
                     <td>
@@ -146,14 +146,14 @@
                  <tbody>
                   <tr>
                     <% @user_rankings.each do |user_ranking| %>
-                    <td style="width:10%">
+                    <td class="td1">
                        <%= user_ranking[:rank] %>
                     </td>
-                    <td style="width:30%">
+                    <td class="td2">
                        <%= attachment_image_tag user_ranking[:user], :image, :fill, 50, 50, format: 'jpeg' , class: "img-circle profile-img", fallback: "/images/no_image.jpg",size: '50x50'%>
                        <%= user_ranking[:user].nickname %>
                     </td>
-                    <td style="width:30%">
+                    <td class="td2">
                       <%= user_ranking[:count] %>
                     </td>
                   </tr>
@@ -174,11 +174,11 @@
               <tbody> 
                 <% @sharingstocks.each do |sharingstock| %>
                   <tr> 
-                    <td style="width:30%">
+                    <td class="td2">
                       <%= attachment_image_tag sharingstock.user, :image, :fill, 50, 50, format: 'jpeg' , class: "img-circle profile-img", fallback: "/images/no_image.jpg",size: '50x50'%>
                       <%= sharingstock.user.nickname %>
                     </td>
-                    <td style="width:30%">
+                    <td class="td2">
                       <%= link_to sharingstock.sharing.title,sharing_path(sharingstock.id) %>
                     </td>
                   </tr>
@@ -198,11 +198,11 @@
                   <tbody>
                     <% @sharing_news .each do |sharing_new| %>
                       <tr>
-                        <td style="width:30%">
+                        <td class="td2">
                           <%= attachment_image_tag sharing_new.user, :image, :fill, 50, 50, format: 'jpeg' , class: "img-circle profile-img", fallback: "/images/no_image.jpg",size: '50x50'%>
                           <%= sharing_new.user.nickname%>
                         </td>
-                        <td style="width:30%">
+                        <td class="td2">
                           <%= link_to sharing_new.title ,sharing_path(sharing_new.id)%>
                         </td>
                       </tr>
@@ -222,11 +222,11 @@
                   <tbody>
                     <% @counseling_news.each do |counseling_new| %> 
                       <tr>
-                        <td style="width:30%">
+                        <td class="td2">
                           <%= attachment_image_tag counseling_new.user, :image, :fill, 50, 50, format: 'jpeg' , class: "img-circle profile-img",fallback: "/images/no_image.jpg",size: '50x50'%>
                           <%= counseling_new.user.nickname%>
                         </td>
-                        <td style="width:30%">
+                       <td class="td2">
                           <%= link_to counseling_new.title ,counseling_path(counseling_new.id) %>
                         </td>
                     </tr>

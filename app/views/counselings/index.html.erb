@@ -3,6 +3,7 @@
   	<div class="col-lg-8">
   		<div>相談一覧</div>
 				
+
 				<% @counselings.each do |counseling| %>
 					<div class="panel panel-default">
 			      <div class="panel-body">
@@ -27,17 +28,17 @@
               <tbody>
                 <% @counseling_viewed.each.with_index(1) do |counseling, i| %>
                   <tr>
-                    <td style="width:15%">
+                    <td class="td01">
                       <%= "#{i}" %>
                     </td>
-                   <td style="width:30%">
+                   <td class="td03">
                     <%= attachment_image_tag counseling.user, :image, :fill, 100, 100, format: 'jpeg' , class: "img-circle pull-left profile-img", fallback: "/images/no_image.jpg",size: '50x50'%>
                    	<%= counseling.user.nickname%>
                    </td>
-                    <td style="width:30%">
+                    <td class="td03">
                       <%= link_to counseling.title ,counseling_path(counseling)%>
                     </td>
-                    <td style="width:15%">
+                    <td class="td01">
                       <%=  counseling.impressions_count %>
                     </td>
                   </tr>
@@ -46,8 +47,6 @@
             </table>
 			      <div>相談いいねランキング</div>
             <table class="table">
-
-   
               <thead>
                 <tr class="warning">
                   <th>順位</th>
@@ -59,18 +58,18 @@
               <tbody>
                 <% @icounselings.each.with_index(1) do |counseling,i| %>
                   <tr>
-                    <td style="width:15%">
+                    <td class="td01">
                       <%= i %>
                     </td>
-                    <td style="width:30%">
+                    <td class="td03">
                         <%= attachment_image_tag counseling.user, :image, :fill, 50, 50, format: 'jpeg' , class: "img-circle profile-img", fallback: "/images/no_image.jpg",size: '50x50'%>
 
                         <%= counseling.user.nickname %>
                     </td>
-                    <td style="width:30%">
+                    <td class="td03">
                       <%=link_to counseling.title ,counseling_path(counseling.id)  %>
                     </td>
-                    <td style="width:20%">
+                    <td class="td02">
                       <%= counseling.counseling_likes.length%>
                     </td>
                   </tr>
@@ -91,14 +90,14 @@
                  <tbody>
                   <tr>
                     <% @user_rankings.each do |user_ranking| %>
-                    <td style="width:15%">
+                    <td class="td01">
                        <%= user_ranking[:rank] %>
                     </td>
-                    <td style="width:30%">
+                    <td class="td03">
                        <%= attachment_image_tag user_ranking[:user], :image, :fill, 50, 50, format: 'jpeg' , class: "img-circle profile-img", fallback: "/images/no_image.jpg",size: '50x50'%>
                        <%= user_ranking[:user].nickname %>
                     </td>
-                    <td style="width:15%">
+                    <td class="td01">
                       <%= user_ranking[:count] %>
                     </td>
                   </tr>
@@ -107,7 +106,7 @@
                 </table>
               </div>
 			</div>
-          <%= paginate @counselings %>
-    <%= link_to '戻る', root_path %>
+        <%= paginate @counselings %>
+        <%= link_to '戻る', root_path %>
    </div>
 </div>

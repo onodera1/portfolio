@@ -25,56 +25,53 @@
         <tbody>
           <% @most_viewed.each.with_index(1) do |sharing, i| %>
             <tr>
-              <td style="width:15%">
+              <td class="td01">
                 <%= "#{i}" %>
               </td>
-              <td style="width:30%">
+              <td class="td03">
                 <div><%= attachment_image_tag sharing.user, :image, :fill, 50, 50, format: 'jpeg' , class: "img-circle profile-img",fallback: "/images/no_image.jpg",size: '50x50'%></div>
                 <div><%= sharing.user.nickname %></div>
               </td>
-              <td style="width:30%">
+              <td class="td03">
                 <%= link_to sharing.title ,sharing_path(sharing.id)%>
               </td>
-               <td style="width:15%">
+               <td class="td01">
                 <%= sharing.impressions_count %>
               </td>
             </tr>
           <% end %>
         </tbody>
       </table>
-
-
-
-            <div>共有いいねランキング</div>
-            <table class="table">
-              <thead>
-                <tr class="warning">
-                  <th>順位</th>
-                  <th>名前</th>
-                  <th>タイトル</th>
-                  <th>いいね数</th>
-                </tr>
-              </thead>
-              <tbody>
-                <% @sharinglikes.each.with_index(1) do |sharing,i| %>
-                  <tr>
-                    <td style="width:15%">
-                      <%= i %>
-                    </td>
-                    <td style="width:30%">
-                      <div><%= attachment_image_tag sharing.user, :image, :fill, 50, 50, format: 'jpeg' , class: "img-circle profile-img", fallback: "/images/no_image.jpg",size: '50x50'%></div>
-                      <div><%= sharing.user.nickname %></div>
-                    </td>
-                     <td style="width:25%">
-                      <%=link_to sharing.title ,sharing_path(sharing.id)  %>
-                    </td>
-                    <td style="width:20%">
-                      <%= sharing.sharing_likes.length%>
-                    </td>
-                  </tr>
-                  <% end %>
-              </tbody>
-            </table>
+      <div>共有いいねランキング</div>
+      <table class="table">
+        <thead>
+          <tr class="warning">
+            <th>順位</th>
+            <th>名前</th>
+            <th>タイトル</th>
+            <th>いいね数</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @sharinglikes.each.with_index(1) do |sharing,i| %>
+            <tr>
+              <td class="td01">
+                <%= i %>
+              </td>
+              <td class="td03">
+                <div><%= attachment_image_tag sharing.user, :image, :fill, 50, 50, format: 'jpeg' , class: "img-circle profile-img", fallback: "/images/no_image.jpg",size: '50x50'%></div>
+                <div><%= sharing.user.nickname %></div>
+              </td>
+               <td class="td02">
+                <%=link_to sharing.title ,sharing_path(sharing.id)  %>
+              </td>
+              <td class="td02">
+                <%= sharing.sharing_likes.length%>
+              </td>
+            </tr>
+            <% end %>
+        </tbody>
+      </table>
     </div>
   </div>
    <%= paginate @sharings %>
